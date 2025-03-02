@@ -36,285 +36,206 @@
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-white">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- Include Alpine.js for Mobile Menu -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
-<style>
-    /* Base Styles */
-    nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(18, 18, 18, 0.9); /* Darker teal-tinted black */
-        backdrop-filter: blur(8px);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-        z-index: 50;
-        opacity: 0;
-        transform: translateY(-100%);
-        animation: navDrop 1.2s ease-out 0.2s forwards;
-    }
-    
-    .nav-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 1.5rem;
-        max-width: 1280px;
-        margin: 0 auto;
-        transition: padding 0.3s ease;
-    }
-    
-    .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #FFFFFF;
-        opacity: 0;
-        animation: logoGlow 1.2s ease-out 0.4s forwards;
-    }
-    
-    .logo h1 {
-        display: inline-block;
-        color: #00C4B4; /* Teal */
-        text-shadow: 0 0 5px rgba(0, 196, 180, 0.5);
-    }
-    
-    .logo span {
-        color: #80DEEA; /* Light cyan */
-    }
-    
-    /* Desktop Menu with Social Icons */
-    .desktop-menu-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-    }
-    
-    .desktop-menu {
-        display: flex;
-        gap: 1.5rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        opacity: 0;
-        transform: translateX(-30px);
-        animation: desktopMenuRise 1s ease-out 0.6s forwards;
-    }
-    
-    .desktop-menu li {
-        transition: transform 0.4s ease, color 0.4s ease;
-    }
-    
-    .desktop-menu a {
-        position: relative;
-        color: #B2EBF2; /* Light cyan */
-        text-decoration: none;
-        transition: color 0.4s ease, transform 0.4s ease;
-    }
-    
-    .desktop-menu a.active {
-        color: #00C4B4; /* Teal */
-        text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
-    }
-    
-    .desktop-menu a::after {
-        content: '';
-        position: absolute;
-        bottom: -6px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #00C4B4;
-        transition: width 0.4s ease-in-out;
-    }
-    
-    .desktop-menu a:hover::after {
-        width: 100%;
-    }
-    
-    .desktop-menu a:hover {
-        color: #FFFFFF;
-        transform: translateY(-3px) rotate(2deg);
-    }
-    
-    /* Social Icons in Menubar (Desktop) */
-    .social-icons.desktop {
-        display: flex;
-        gap: 1rem;
-        opacity: 0;
-        transform: scale(0.8);
-        animation: socialSpinPop 0.8s ease-out 0.8s forwards;
-    }
-    
-    .social-icon {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 1.3rem;
-        transition: all 0.4s ease;
-    }
-    
-    .social-icon:hover {
-        color: #00C4B4;
-        transform: scale(1.3) rotate(15deg);
-        text-shadow: 0 0 10px rgba(0, 196, 180, 0.8);
-    }
-    
-    /* Mobile Menu Button */
-    .mobile-btn {
-        font-size: 1.5rem;
-        color: #FFFFFF;
-        background: none;
-        border: none;
-        cursor: pointer;
-        transition: transform 0.3s ease, color 0.3s ease;
-        opacity: 0;
-        animation: buttonPulse 0.8s ease-out 0.5s forwards;
-    }
-    
-    .mobile-btn:hover {
-        transform: scale(1.2) rotate(10deg);
-        color: #00C4B4;
-    }
-    
-    /* Mobile Menu with Social Icons */
-    .mobile-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(18, 18, 18, 0.95);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-        transform-origin: top;
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.5s ease-out;
-    }
-    
-    .mobile-menu[x-show="open"] {
-        opacity: 1;
-        max-height: 450px;
-        animation: mobileMenuUnfold 0.7s ease-out forwards;
-    }
-    
-    .mobile-menu .menu-content {
-        padding: 1.5rem 0;
-        text-align: center;
-    }
-    
-    .mobile-menu ul {
-        margin-bottom: 1rem;
-    }
-    
-    .mobile-menu li {
-        opacity: 0;
-        transform: translateY(30px) rotateX(20deg);
-        animation: mobileItemRise 0.6s ease-out forwards;
-    }
-    
-    .mobile-menu[x-show="open"] li {
-        animation: mobileItemRise 0.6s ease-out forwards;
-    }
-    
-    .mobile-menu li:nth-child(1) { animation-delay: 0.2s; }
-    .mobile-menu li:nth-child(2) { animation-delay: 0.3s; }
-    .mobile-menu li:nth-child(3) { animation-delay: 0.4s; }
-    .mobile-menu li:nth-child(4) { animation-delay: 0.5s; }
-    
-    .mobile-menu a {
-        display: block;
-        color: #FFFFFF;
-        font-size: 1.125rem;
-        padding: 1rem;
-        transition: all 0.4s ease;
-    }
-    
-    .mobile-menu a:hover {
-        color: #00C4B4;
-        transform: translateX(15px) scale(1.1);
-        text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
-    }
-    
-    .mobile-menu .social-icons {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        padding: 1rem 0;
-        opacity: 0;
-        transform: scale(0.8);
-        animation: socialSpinPopMobile 0.7s ease-out 0.7s forwards;
-    }
-    
-    /* Animation Keyframes */
-    @keyframes navDrop {
-        0% { opacity: 0; transform: translateY(-100%) scale(0.95); }
-        100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    
-    @keyframes logoGlow {
-        0% { opacity: 0; transform: translateY(-15px) scale(0.9); }
-        60% { transform: translateY(-5px) scale(1.05); }
-        100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    
-    @keyframes desktopMenuRise {
-        0% { opacity: 0; transform: translateX(-30px) rotateX(20deg); }
-        100% { opacity: 1; transform: translateX(0) rotateX(0); }
-    }
-    
-    @keyframes socialSpinPop {
-        0% { opacity: 0; transform: scale(0.8) rotate(-15deg); }
-        60% { transform: scale(1.3) rotate(10deg); }
-        100% { opacity: 1; transform: scale(1) rotate(0); }
-    }
-    
-    @keyframes mobileItemRise {
-        0% { opacity: 0; transform: translateY(30px) rotateX(20deg); }
-        100% { opacity: 1; transform: translateY(0) rotateX(0); }
-    }
-    
-    @keyframes buttonPulse {
-        0% { opacity: 0; transform: scale(0.8); }
-        50% { transform: scale(1.2); }
-        100% { opacity: 1; transform: scale(1); }
-    }
-    
-    @keyframes mobileMenuUnfold {
-        0% { opacity: 0; transform: scaleY(0) rotateX(-20deg); }
-        100% { opacity: 1; transform: scaleY(1) rotateX(0); }
-    }
-    
-    @keyframes socialSpinPopMobile {
-        0% { opacity: 0; transform: scale(0.8) rotate(-20deg); }
-        100% { opacity: 1; transform: scale(1) rotate(0); }
-    }
-    
-    /* Responsive Design */
-    @media (min-width: 768px) {
-        .desktop-menu-wrapper { display: flex; }
-        .mobile-btn { display: none; }
-        .mobile-menu { display: none; }
-    }
-    
-    @media (max-width: 767px) {
-        .nav-container { padding: 1rem; }
-        .desktop-menu-wrapper { display: none; }
-        .mobile-menu[x-show="open"] {
-            animation: mobileMenuUnfold 0.7s ease-out forwards;
+    <style>
+        /* Base Styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            z-index: 50;
         }
-    }
-    
-    /* Smooth scroll behavior */
-    html {
-        scroll-behavior: smooth;
-    }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+        
+        .logo h1 {
+            display: inline-block;
+            color: #00C4B4;
+            text-shadow: 0 0 5px rgba(0, 196, 180, 0.5);
+        }
+        
+        /* Desktop Menu with Social Icons */
+        .desktop-menu-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .desktop-menu {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .desktop-menu a {
+            position: relative;
+            color: #B2EBF2;
+            text-decoration: none;
+            transition: color 0.4s ease, transform 0.4s ease;
+        }
+        
+        .desktop-menu a.active {
+            color: #00C4B4;
+            text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+        }
+        
+        .desktop-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00C4B4;
+            transition: width 0.4s ease-in-out;
+        }
+        
+        .desktop-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .desktop-menu a:hover {
+            color: #FFFFFF;
+            transform: translateY(-3px) rotate(2deg);
+        }
+        
+        .social-icons.desktop {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+        }
+        
+        .social-icon:hover {
+            color: #00C4B4;
+            transform: scale(1.3) rotate(15deg);
+            text-shadow: 0 0 10px rgba(0, 196, 180, 0.8);
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-btn {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .mobile-btn:hover {
+            transform: scale(1.2) rotate(10deg);
+            color: #00C4B4;
+        }
+        
+        /* Mobile Menu with Social Icons */
+        .mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(18, 18, 18, 0.95);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transform-origin: top;
+            transition: max-height 0.5s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu[x-show="open"] {
+            max-height: 500px; /* Increased to ensure all content fits */
+            opacity: 1;
+        }
+        
+        .mobile-menu .menu-content {
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .mobile-menu ul {
+            margin-bottom: 1rem;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            color: #FFFFFF;
+            font-size: 1.125rem;
+            padding: 1rem;
+            transition: all 0.4s ease;
+        }
+        
+        .mobile-menu a:hover {
+            color: #00C4B4;
+            transform: translateX(15px) scale(1.1);
+            text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+        }
+        
+        .mobile-menu .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .desktop-menu-wrapper { display: flex; }
+            .mobile-btn { display: none; }
+            .mobile-menu { display: none; }
+        }
+        
+        @media (max-width: 767px) {
+            .nav-container { padding: 1rem; }
+            .desktop-menu-wrapper { display: none; }
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Flex utility for logo alignment */
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Ensure x-cloak hides elements before Alpine.js loads */
+        [x-cloak] {
+            display: none;
+        }
     </style>
-    
     <nav x-data="{ open: false }">
         <div class="nav-container">
             <!-- Logo -->
-            <div class="logo">
-                <h1 class="text-xl font-semibold">Retrofit Studio</h1>
+            <div class="logo flex">
+                <img class="w-[100px]" src="./images/retrofit.png" alt="Retrofit Studio Logo" style="max-height: 80px;">
+                <h1 class="text-xl ml-3 font-semibold">Retrofit Studio</h1>
             </div>
-    
+
             <!-- Desktop Menu with Social Icons -->
             <div class="desktop-menu-wrapper">
                 <ul class="desktop-menu">
@@ -330,22 +251,22 @@
                     <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-    
+
             <!-- Mobile Menu Button -->
             <button @click="open = !open" class="mobile-btn">
                 <i x-show="!open" class="fas fa-bars"></i>
                 <i x-show="open" class="fas fa-times"></i>
             </button>
         </div>
-    
+
         <!-- Mobile Menu with Social Icons -->
         <div x-show="open" class="mobile-menu" x-cloak>
             <div class="menu-content">
                 <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#projects">PROJECTS</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="#" @click="open = false">HOME</a></li>
+                    <li><a href="#about" @click="open = false">ABOUT</a></li>
+                    <li><a href="#projects" @click="open = false">PROJECTS</a></li>
+                    <li><a href="#contact" @click="open = false">CONTACT</a></li>
                 </ul>
                 <div class="social-icons">
                     <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -1886,10 +1807,19 @@
         </section>
 </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white text-center py-6">
-        <p>&copy; 2023 Bauhaus Architecture. All rights reserved.</p>
-    </footer>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white text-center py-6">
+    <p>&copy; 2025 Bauhaus Architecture. All rights reserved.</p>
+    
+    <!-- Social Links -->
+    <div class="flex justify-center space-x-6 mt-4">
+        <a href="#" class="text-xl hover:text-cyan-400"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-xl hover:text-cyan-400"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-xl hover:text-cyan-400"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-xl hover:text-cyan-400"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+</footer>
+
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
