@@ -306,7 +306,9 @@
     <nav x-data="{ open: false }">
         <div class="nav-container">
             <!-- Logo -->
-            <div class="logo">bauhaus <span>architecture</span></div>
+            <div class="logo">
+                <h1 class="text-xl text-[#FBBF24] font-semibold">Retrofit studio</h1>
+            </div>
 
             <!-- Desktop Menu with Social Icons -->
             <div class="desktop-menu-wrapper">
@@ -791,7 +793,7 @@
     
                 <!-- Image Content -->
                 <div class="image-content animate-on-scroll">
-                    <img src="./images/about.png" alt="Architectural Design">
+                    <img src="./images/care & cure uae (1).jpg" alt="Architectural Design">
                 </div>
             </div>
         </section>
@@ -814,71 +816,372 @@
             });
         </script>
 
-            
+<!-- Projects Section -->
 <section id="projects" class="text-white px-6 md:px-12 lg:px-24 xl:px-36 py-16">
     <div class="swiper my-8">
         <div class="swiper-wrapper">
-            <!-- Project Cards -->
-            <div class="swiper-slide">
+            <!-- Project Cards (Swiper Slides) -->
+            <div class="swiper-slide"> 
                 <div class="relative hover-item overflow-hidden rounded-2xl">
-                    <img src="./images/project.png" alt="Milko Co-Working Building" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <img src="./images/blue mart uae (1).jpg" alt="Milko Co-Working Building" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
                     <div class="absolute inset-0 hover-overlay"></div>
                     <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal1">See project <span class="ml-1">&rarr;</span></a>
                         <h2 class="text-xl md:text-2xl font-bold">Milko Co-Working Building</h2>
-                        <a href="#" class="text-sm text-yellow-400 flex items-center">See project <span class="ml-1">&rarr;</span></a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Duplicate this slide for more projects -->
-            <div class="swiper-slide">
-                <div class="relative hover-item overflow-hidden rounded-2xl">
-                    <img src="./images/project.png" alt="Project 2" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
-                    <div class="absolute inset-0 hover-overlay"></div>
-                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
-                        <h2 class="text-xl md:text-2xl font-bold">Modern Office Space</h2>
-                        <a href="#" class="text-sm text-yellow-400 flex items-center">See project <span class="ml-1">&rarr;</span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="relative hover-item overflow-hidden rounded-2xl">
-                    <img src="./images/project.png" alt="Project 2" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
-                    <div class="absolute inset-0 hover-overlay"></div>
-                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
-                        <h2 class="text-xl md:text-2xl font-bold">Modern Office Space</h2>
-                        <a href="#" class="text-sm text-yellow-400 flex items-center">See project <span class="ml-1">&rarr;</span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="relative hover-item overflow-hidden rounded-2xl">
-                    <img src="./images/project.png" alt="Project 2" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
-                    <div class="absolute inset-0 hover-overlay"></div>
-                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
-                        <h2 class="text-xl md:text-2xl font-bold">Modern Office Space</h2>
-                        <a href="#" class="text-sm text-yellow-400 flex items-center">See project <span class="ml-1">&rarr;</span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="relative hover-item overflow-hidden rounded-2xl">
-                    <img src="./images/project.png" alt="Project 2" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
-                    <div class="absolute inset-0 hover-overlay"></div>
-                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
-                        <h2 class="text-xl md:text-2xl font-bold">Modern Office Space</h2>
-                        <a href="#" class="text-sm text-yellow-400 flex items-center">See project <span class="ml-1">&rarr;</span></a>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Add more slides as needed -->
+            <div class="swiper-slide">
+                <div class="relative hover-item overflow-hidden rounded-2xl">
+                    <img src="./images/blue mart uae (2).jpg" alt="Modern Office Space" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <div class="absolute inset-0 hover-overlay"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal2">See project <span class="ml-1">&rarr;</span></a>
+                        <h2 class="text-xl md:text-2xl font-bold">Modern Office Space</h2>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide"> 
+                <div class="relative hover-item overflow-hidden rounded-2xl">
+                    <img src="./images/blue mart uae (3).jpg" alt="Milko Co-Working Building" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <div class="absolute inset-0 hover-overlay"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal3">See project <span class="ml-1">&rarr;</span></a>
+                        <h2 class="text-xl md:text-2xl font-bold">Milko Co-Working Building</h2>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="relative hover-item overflow-hidden rounded-2xl">
+                    <img src="./images/bright appolo -uae-dubai.jpg" alt="Modern Office Space" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <div class="absolute inset-0 hover-overlay"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal4">See project <span class="ml-1">&rarr;</span></a>
+                        <h2 class="text-xl md:text-2xl font-bold">Modern Office Space</h2>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide"> 
+                <div class="relative hover-item overflow-hidden rounded-2xl">
+                    <img src="./images/car wash centure ksa (1).jpg" alt="Milko Co-Working Building" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <div class="absolute inset-0 hover-overlay"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal5">See project <span class="ml-1">&rarr;</span></a>
+                        <h2 class="text-xl md:text-2xl font-bold">Milko Co-Working Building</h2>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="relative hover-item overflow-hidden rounded-2xl">
+                    <img src="./images/car wash centure ksa (2).jpg" alt="Modern Office Space" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <div class="absolute inset-0 hover-overlay"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal6">See project <span class="ml-1">&rarr;</span></a>
+                        <h2 class="text-xl md:text-2xl font-bold">Modern Office Space</h2>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide"> 
+                <div class="relative hover-item overflow-hidden rounded-2xl">
+                    <img src="./images/car wash centure ksa (3).jpg" alt="Milko Co-Working Building" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <div class="absolute inset-0 hover-overlay"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal7">See project <span class="ml-1">&rarr;</span></a>
+                        <h2 class="text-xl md:text-2xl font-bold">Milko Co-Working Building</h2>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="relative hover-item overflow-hidden rounded-2xl">
+                    <img src="./images/car wash centure ksa (4).jpg" alt="Modern Office Space" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <div class="absolute inset-0 hover-overlay"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal8">See project <span class="ml-1">&rarr;</span></a>
+                        <h2 class="text-xl md:text-2xl font-bold">Modern Office Space</h2>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide"> 
+                <div class="relative hover-item overflow-hidden rounded-2xl">
+                    <img src="./images/villa-1.jpg" alt="Milko Co-Working Building" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <div class="absolute inset-0 hover-overlay"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal9">See project <span class="ml-1">&rarr;</span></a>
+                        <h2 class="text-xl md:text-2xl font-bold">Milko Co-Working Building</h2>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="relative hover-item overflow-hidden rounded-2xl">
+                    <img src="./images/the noodle house (4).jpg" alt="Modern Office Space" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
+                    <div class="absolute inset-0 hover-overlay"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 transform translate-y-6 transition-all duration-300">
+                        <a href="#" class="openModal text-xl font-medium text-blue-500 flex items-center" data-modal="modal10">See project <span class="ml-1">&rarr;</span></a>
+                        <h2 class="text-xl md:text-2xl font-bold">Modern Office Space</h2>
+                        <p class="text-sm  font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto ratione maxime veniam rem, amet autem in.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Swiper Pagination -->
         <div class="swiper-pagination"></div>
     </div>
 </section>
+
+<!-- Project Modals -->
+<section id="modal1" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/blue mart uae (1).jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Milko Co-Working Building</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Ethan Hunt, John Doe</p>
+                    <p><span class="font-semibold">Completion:</span> February 5th, 2019</p>
+                    <p><span class="font-semibold">Project Type:</span> Villa, Residence</p>
+                    <p><span class="font-semibold">Architects:</span> Logan Cee, Paul</p>
+                    <p><span class="font-semibold">Budget:</span> $1,200,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="modal2" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/blue mart uae (2).jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Modern Office Space</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                    <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                    <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                    <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                    <p><span class="font-semibold">Budget:</span> $900,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="modal3" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/blue mart uae (3).jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Modern Office Space</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                    <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                    <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                    <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                    <p><span class="font-semibold">Budget:</span> $900,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="modal4" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/bright appolo -uae-dubai.jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Modern Office Space</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                    <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                    <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                    <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                    <p><span class="font-semibold">Budget:</span> $900,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="modal5" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/car wash centure ksa (1).jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Modern Office Space</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                    <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                    <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                    <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                    <p><span class="font-semibold">Budget:</span> $900,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="modal6" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/car wash centure ksa (2).jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Modern Office Space</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                    <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                    <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                    <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                    <p><span class="font-semibold">Budget:</span> $900,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="modal7" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/car wash centure ksa (3).jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Modern Office Space</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                    <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                    <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                    <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                    <p><span class="font-semibold">Budget:</span> $900,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="modal8" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/car wash centure ksa (4).jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Modern Office Space</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                    <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                    <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                    <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                    <p><span class="font-semibold">Budget:</span> $900,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="modal9" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/villa-1.jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Modern Office Space</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                    <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                    <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                    <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                    <p><span class="font-semibold">Budget:</span> $900,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="modal10" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="relative bg-gray-800 p-6 max-w-4xl w-full rounded-lg shadow-lg text-white">
+        <button class="closeModal absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <img src="./images/the noodle house (4).jpg" alt="Building" class="rounded-lg">
+            <div>
+                <h2 class="text-2xl font-bold">Modern Office Space</h2>
+                <p class="text-gray-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="mt-4 space-y-2">
+                    <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                    <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                    <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                    <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                    <p><span class="font-semibold">Budget:</span> $900,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Modals -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const openModalButtons = document.querySelectorAll(".openModal");
+        const closeModalButtons = document.querySelectorAll(".closeModal");
+        const modals = document.querySelectorAll(".modal");
+
+        // Open the correct modal
+        openModalButtons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                e.preventDefault();
+                const modalId = button.getAttribute("data-modal");
+                document.getElementById(modalId).classList.remove("hidden");
+            });
+        });
+
+        // Close the modal when clicking close button
+        closeModalButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                button.closest(".modal").classList.add("hidden");
+            });
+        });
+
+        // Close modal when clicking outside
+        modals.forEach(modal => {
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    modal.classList.add("hidden");
+                }
+            });
+        });
+    });
+</script>
+
+
     
         <style>
             .hover-overlay {
@@ -1236,6 +1539,7 @@
                     <div class="swiper-button-prev"></div>
                 </div>
             </div>
+          
         </section>
 </section>
 
