@@ -3,42 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retrofit studio</title>
+    <title>Retrofit Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         html {
             scroll-behavior: smooth;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         .animate-fadeIn {
             animation: fadeIn 1.5s ease-in-out;
         }
+
         .hover-overlay {
             transition: all 0.3s ease-in-out;
             opacity: 0;
         }
+
         .hover-item:hover .hover-overlay {
             opacity: 1;
             background: rgba(255, 215, 0, 0.4);
         }
+
         .hover-item:hover .text-content {
             transform: translateY(0);
             opacity: 1;
         }
-    </style>
-</head>
-<body class="bg-[#0a0a0a] text-white">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Include Alpine.js for Mobile Menu -->
-    <style>
+
         /* Base Styles */
         nav {
             position: fixed;
@@ -49,8 +49,10 @@
             backdrop-filter: blur(8px);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
             z-index: 50;
+            opacity: 0;
+            animation: navSlideIn 1s ease-out 0.2s forwards;
         }
-        
+
         .nav-container {
             display: flex;
             align-items: center;
@@ -59,45 +61,47 @@
             max-width: 1280px;
             margin: 0 auto;
         }
-        
+
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
             color: #FFFFFF;
         }
-        
+
         .logo h1 {
             display: inline-block;
             color: #00C4B4;
             text-shadow: 0 0 5px rgba(0, 196, 180, 0.5);
         }
-        
+
         /* Desktop Menu with Social Icons */
         .desktop-menu-wrapper {
-            display: flex;
+            display: none;
             align-items: center;
             gap: 2rem;
         }
-        
+
         .desktop-menu {
             display: flex;
             gap: 1.5rem;
             font-size: 0.875rem;
             font-weight: 600;
+            opacity: 0;
+            animation: desktopMenuSlideIn 1s ease-out 0.6s forwards;
         }
-        
+
         .desktop-menu a {
             position: relative;
             color: #B2EBF2;
             text-decoration: none;
             transition: color 0.4s ease, transform 0.4s ease;
         }
-        
+
         .desktop-menu a.active {
             color: #00C4B4;
             text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
         }
-        
+
         .desktop-menu a::after {
             content: '';
             position: absolute;
@@ -108,33 +112,36 @@
             background: #00C4B4;
             transition: width 0.4s ease-in-out;
         }
-        
+
         .desktop-menu a:hover::after {
             width: 100%;
         }
-        
+
         .desktop-menu a:hover {
             color: #FFFFFF;
             transform: translateY(-3px) rotate(2deg);
         }
-        
+
         .social-icons.desktop {
             display: flex;
             gap: 1rem;
+            opacity: 0;
+            animation: socialIconPop 0.7s ease-out 0.8s forwards;
         }
-        
+
         .social-icon {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(43, 184, 197, 0.7);
             font-size: 1.3rem;
             transition: all 0.4s ease;
         }
-        
+
         .social-icon:hover {
             color: #00C4B4;
             transform: scale(1.3) rotate(15deg);
-            text-shadow: 0 0 10px rgba(0, 196, 180, 0.8);
+            text-shadow: 0 0 10px rgba(158, 19, 19, 0.8);
+            animation: socialPulse 1.5s infinite ease-in-out;
         }
-        
+
         /* Mobile Menu Button */
         .mobile-btn {
             font-size: 1.5rem;
@@ -144,12 +151,12 @@
             cursor: pointer;
             transition: transform 0.3s ease, color 0.3s ease;
         }
-        
+
         .mobile-btn:hover {
             transform: scale(1.2) rotate(10deg);
             color: #00C4B4;
         }
-        
+
         /* Mobile Menu with Social Icons */
         .mobile-menu {
             position: absolute;
@@ -164,21 +171,37 @@
             opacity: 0;
             overflow: hidden;
         }
-        
+
         .mobile-menu[x-show="open"] {
-            max-height: 500px; /* Increased to ensure all content fits */
+            max-height: 500px;
             opacity: 1;
+            animation: mobileMenuExpand 0.6s ease-out forwards;
         }
-        
+
         .mobile-menu .menu-content {
             padding: 1.5rem 0;
             text-align: center;
         }
-        
+
         .mobile-menu ul {
             margin-bottom: 1rem;
         }
-        
+
+        .mobile-menu li {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: menuItemReveal 0.5s ease-out forwards;
+        }
+
+        .mobile-menu[x-show="open"] li {
+            animation: menuItemReveal 0.5s ease-out forwards;
+        }
+
+        .mobile-menu li:nth-child(1) { animation-delay: 0.2s; }
+        .mobile-menu li:nth-child(2) { animation-delay: 0.3s; }
+        .mobile-menu li:nth-child(3) { animation-delay: 0.4s; }
+        .mobile-menu li:nth-child(4) { animation-delay: 0.5s; }
+
         .mobile-menu a {
             display: block;
             color: #FFFFFF;
@@ -186,35 +209,71 @@
             padding: 1rem;
             transition: all 0.4s ease;
         }
-        
+
         .mobile-menu a:hover {
             color: #00C4B4;
             transform: translateX(15px) scale(1.1);
             text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
         }
-        
+
         .mobile-menu .social-icons {
             display: flex;
             justify-content: center;
             gap: 1rem;
             padding: 1rem 0;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: socialIconPopMobile 0.6s ease-out 0.6s forwards;
         }
-        
+
+        /* Animation Keyframes */
+        @keyframes navSlideIn {
+            0% { opacity: 0; transform: translateY(-100%); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes desktopMenuSlideIn {
+            0% { opacity: 0; transform: translateX(-20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes socialIconPop {
+            0% { opacity: 0; transform: scale(0.8); }
+            60% { transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes menuItemReveal {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes socialPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes mobileMenuExpand {
+            0% { opacity: 0; transform: scaleY(0); }
+            100% { opacity: 1; transform: scaleY(1); }
+        }
+
+        @keyframes socialIconPopMobile {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
         /* Responsive Design */
         @media (min-width: 768px) {
             .desktop-menu-wrapper { display: flex; }
             .mobile-btn { display: none; }
             .mobile-menu { display: none; }
         }
-        
+
         @media (max-width: 767px) {
             .nav-container { padding: 1rem; }
             .desktop-menu-wrapper { display: none; }
-        }
-        
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
+            .social-icons.desktop { display: none; } /* Ensure desktop icons are hidden on mobile */
         }
 
         /* Flex utility for logo alignment */
@@ -225,10 +284,12 @@
 
         /* Ensure x-cloak hides elements before Alpine.js loads */
         [x-cloak] {
-            display: none;
+            display: none !important;
         }
     </style>
-    <nav x-data="{ open: false }">
+</head>
+<body class="bg-[#0a0a0a] text-white">
+    <nav x-data="{ open: false }" x-cloak>
         <div class="nav-container">
             <!-- Logo -->
             <div class="logo flex">
@@ -288,7 +349,7 @@
             justify-content: start;
             overflow: hidden;
         }
-        
+
         /* Overlay */
         .overlay {
             position: absolute;
@@ -296,7 +357,7 @@
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
             animation: overlayPulse 8s ease-in-out infinite;
         }
-        
+
         /* Content Container */
         .content {
             position: relative;
@@ -309,7 +370,7 @@
             margin: 0 auto;
             padding: 1.5rem;
         }
-        
+
         /* Text Elements */
         .subtitle {
             color: #80DEEA; /* Light cyan */
@@ -318,7 +379,7 @@
             margin-bottom: 0.75rem;
             animation: fadeInSpin 1.2s ease-out forwards;
         }
-        
+
         .title {
             font-size: 3rem;
             font-weight: bold;
@@ -326,48 +387,57 @@
             margin-bottom: 1.5rem;
             color: #FFFFFF;
         }
-        
+
         .title span {
             display: inline-block;
         }
-        
+
         .highlight {
             color: #00C4B4; /* Teal */
         }
-        
+
         /* Button/Link */
         .project-link {
             margin-top: 1.5rem;
             padding-left: 1rem;
             border-left: 4px solid #00C4B4;
+            animation: borderGlow 2.5s ease-in-out infinite;
         }
-        
+
         .project-link a {
-            color: #B2EBF2; /* Light cyan */
-            font-weight: 600;
-            font-size: 1.125rem;
+            color: #26C6DA; /* Slightly lighter teal for better contrast */
+            font-family: 'Roboto', sans-serif; /* Modern, clean font */
+            font-weight: 700; /* Bolder for emphasis */
+            font-size: 1.25rem; /* Slightly larger for visibility */
             display: flex;
             align-items: center;
             gap: 0.5rem;
             text-decoration: none;
             transition: all 0.5s ease;
         }
-        
+
         .project-link a:hover {
-            color: #FFFFFF;
+            color: #E0F7FA; /* Light cyan on hover for a subtle glow */
             transform: translateX(0.75rem) rotate(3deg);
+            text-shadow: 0 0 10px rgba(0, 196, 180, 0.7); /* Glow effect on hover */
         }
-        
+
+        .project-link a span:first-child {
+            font-family: 'Roboto', sans-serif; /* Ensure consistency */
+            font-weight: 700; /* Match the link weight */
+        }
+
         .project-link a span:last-child {
-            color: #00C4B4;
-            font-size: 1.25rem;
-            transition: transform 0.3s ease;
+            color: #00C4B4; /* Teal arrow */
+            font-size: 1.5rem; /* Slightly larger arrow for emphasis */
+            transition: transform 0.3s ease, color 0.5s ease;
         }
-        
+
         .project-link a:hover span:last-child {
             transform: translateX(5px) rotate(45deg);
+            color: #E0F7FA; /* Match the hover color of the text */
         }
-        
+
         /* Particle Effects */
         .particle {
             position: absolute;
@@ -378,18 +448,18 @@
             z-index: 5;
             animation: particleOrbit 5s ease-in-out infinite;
         }
-        
+
         /* Animation Keyframes */
         @keyframes overlayPulse {
             0%, 100% { opacity: 0.6; transform: scale(1); }
             50% { opacity: 0.9; transform: scale(1.02); }
         }
-        
+
         @keyframes fadeInSpin {
             0% { opacity: 0; transform: translateY(30px) rotate(-10deg); }
             100% { opacity: 1; transform: translateY(0) rotate(0deg); }
         }
-        
+
         @keyframes titleRise {
             0% {
                 opacity: 0;
@@ -405,12 +475,12 @@
                 filter: blur(0);
             }
         }
-        
+
         @keyframes glowPulse {
             0%, 100% { text-shadow: 0 0 5px rgba(0, 196, 180, 0.5); }
             50% { text-shadow: 0 0 20px rgba(0, 196, 180, 0.9), 0 0 30px rgba(0, 196, 180, 0.5); }
         }
-        
+
         @keyframes particleOrbit {
             0% {
                 opacity: 0;
@@ -429,76 +499,78 @@
                 transform: scale(0.5) translate(calc(var(--x-move) * 1.5), calc(var(--y-move) * 1.5)) rotate(360deg);
             }
         }
-        
+
         @keyframes borderGlow {
             0%, 100% { border-color: #00C4B4; }
             50% { border-color: #26A69A; box-shadow: 0 0 12px rgba(0, 196, 180, 0.7); }
         }
-        
+
         /* Animation Classes */
         .animate-subtitle { animation: fadeInSpin 1.2s ease-out forwards; }
         .animate-title span { animation: titleRise 1s ease-out forwards; }
         .highlight.animate-glow { animation: glowPulse 2.5s ease-in-out infinite; }
         .animate-link { animation: fadeInSpin 1s ease-out 0.6s forwards; }
         .project-link { animation: borderGlow 2.5s ease-in-out infinite; }
-        
+
         /* Staggered Delays for Title Words */
         .title span:nth-child(1) { animation-delay: 0.3s; }
         .title span:nth-child(2) { animation-delay: 0.4s; }
         .title span:nth-child(3) { animation-delay: 0.5s; }
         .title span:nth-child(4) { animation-delay: 0.6s; }
-        
+
         /* Particle Positions */
         .particle-1 { left: 15%; top: 25%; --x-move: -50px; --y-move: -60px; animation-delay: 0s; }
         .particle-2 { left: 65%; top: 15%; --x-move: 40px; --y-move: -50px; animation-delay: 0.7s; }
         .particle-3 { left: 35%; top: 70%; --x-move: -30px; --y-move: 40px; animation-delay: 1.2s; }
         .particle-4 { left: 85%; top: 55%; --x-move: 60px; --y-move: -30px; animation-delay: 1.8s; }
-        
+
         /* Responsive Adjustments */
         @media (min-width: 640px) {
             .title { font-size: 3.75rem; }
             .content { padding: 2rem; }
+            .project-link a { font-size: 1.5rem; } /* Larger font on medium screens */
         }
-        
+
         @media (min-width: 1024px) {
             .title { font-size: 4.5rem; }
             .content { padding: 4rem; }
+            .project-link a { font-size: 1.75rem; } /* Even larger on desktop */
         }
-        
+
         @media (max-width: 640px) {
             .title { font-size: 2.25rem; }
-            .project-link a { font-size: 1rem; }
+            .project-link a { font-size: 1rem; } /* Smaller font on mobile */
+            .project-link a span:last-child { font-size: 1.25rem; } /* Adjust arrow size */
             .particle { width: 8px; height: 8px; }
         }
-        </style>
-        
-        <header>
-            <!-- Overlay -->
-            <div class="overlay"></div>
-        
-            <!-- Particle Effects -->
-            <span class="particle particle-1"></span>
-            <span class="particle particle-2"></span>
-            <span class="particle particle-3"></span>
-            <span class="particle particle-4"></span>
-        
-            <!-- Content -->
-            <div class="content">
-                <p class="subtitle animate-subtitle">Residential</p>
-                <h1 class="title animate-title">
-                    <span>The </span>
-                    <span class="highlight animate-glow">Retrofit</span><br>
-                    <span>Studio </span>
-                    <span>in forest</span>
-                </h1>
-                <div class="project-link">
-                    <a href="#projects" class="animate-link" style="opacity: 0;">
-                        <span>See project</span>
-                        <span>→</span>
-                    </a>
-                </div>
+    </style>
+    <header>
+        <!-- Overlay -->
+        <div class="overlay"></div>
+
+        <!-- Particle Effects -->
+        <span class="particle particle-1"></span>
+        <span class="particle particle-2"></span>
+        <span class="particle particle-3"></span>
+        <span class="particle particle-4"></span>
+
+        <!-- Content -->
+        <div class="content">
+            <p class="subtitle animate-subtitle">Residential</p>
+            <h1 class="title animate-title">
+                <span>The </span>
+                <span class="highlight animate-glow">Retrofit</span><br>
+                <span>Studio </span>
+                <span>in forest</span>
+            </h1>
+            <div class="project-link">
+                <a href="#projects" class="animate-link" style="opacity: 0;">
+                    <span>See project</span>
+                    <span>→</span>
+                </a>
             </div>
-        </header>
+        </div>
+    </header>
         <style>
             /* Base Styles */
             #about {
@@ -933,12 +1005,12 @@
                             <!-- Slide 1 -->
                             <div class="swiper-slide">
                                 <div class="relative hover-item">
-                                    <img src="./images/blue mart uae (1).jpg" alt="Milko Co-Working Building">
+                                    <img src="./images/office-uae  (5).jpg" alt="Modern Office Space">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Milko Co-Working Building</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        <a href="#" class="openModal" data-modal="modal1">See project <span>→</span></a>
+                                        <h2>Office UAE - Tower 3</h2>
+                                        <p>Premium office design with panoramic city vistas.</p>
+                                        <a href="#" class="openModal" data-modal="modal13">See project <span>→</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -949,8 +1021,8 @@
                                     <img src="./images/blue mart uae (2).jpg" alt="Modern Office Space">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Modern Office Space</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <h2>Blue Mart UAE - Phase 2</h2>
+                                        <p>Expanded retail space with innovative interior layouts.</p>
                                         <a href="#" class="openModal" data-modal="modal2">See project <span>→</span></a>
                                     </div>
                                 </div>
@@ -962,8 +1034,8 @@
                                     <img src="./images/blue mart uae (3).jpg" alt="Milko Co-Working Building">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Milko Co-Working Building</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <h2>Blue Mart UAE - Phase 3</h2>
+                                        <p>Final phase featuring sustainable design elements.</p>
                                         <a href="#" class="openModal" data-modal="modal3">See project <span>→</span></a>
                                     </div>
                                 </div>
@@ -975,8 +1047,8 @@
                                     <img src="./images/bright appolo -uae-dubai.jpg" alt="Modern Office Space">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Modern Office Space</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <h2>Bright Apollo Dubai</h2>
+                                        <p>A luxurious residential villa with panoramic city views.</p>
                                         <a href="#" class="openModal" data-modal="modal4">See project <span>→</span></a>
                                     </div>
                                 </div>
@@ -985,12 +1057,12 @@
                             <!-- Slide 5 -->
                             <div class="swiper-slide">
                                 <div class="relative hover-item">
-                                    <img src="./images/car wash centure ksa (1).jpg" alt="Milko Co-Working Building">
+                                    <img src="./images/villa-1.jpg" alt="Milko Co-Working Building">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Milko Co-Working Building</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        <a href="#" class="openModal" data-modal="modal5">See project <span>→</span></a>
+                                        <h2>Villa Serenity</h2>
+                                        <p>A tranquil luxury residence surrounded by nature.</p>
+                                        <a href="#" class="openModal" data-modal="modal9">See project <span>→</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -1001,8 +1073,8 @@
                                     <img src="./images/car wash centure ksa (2).jpg" alt="Modern Office Space">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Modern Office Space</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <h2>Car Wash Centre KSA - Unit 2</h2>
+                                        <p>Second unit with eco-friendly water recycling systems.</p>
                                         <a href="#" class="openModal" data-modal="modal6">See project <span>→</span></a>
                                     </div>
                                 </div>
@@ -1014,8 +1086,8 @@
                                     <img src="./images/car wash centure ksa (3).jpg" alt="Milko Co-Working Building">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Milko Co-Working Building</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <h2>Car Wash Centre KSA - Unit 3</h2>
+                                        <p>Advanced cleaning technology for high-volume traffic.</p>
                                         <a href="#" class="openModal" data-modal="modal7">See project <span>→</span></a>
                                     </div>
                                 </div>
@@ -1027,22 +1099,23 @@
                                     <img src="./images/car wash centure ksa (4).jpg" alt="Modern Office Space">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Modern Office Space</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <h2>Car Wash Centre KSA - Unit 4</h2>
+                                        <p>Final unit with premium customer lounge features.</p>
                                         <a href="#" class="openModal" data-modal="modal8">See project <span>→</span></a>
                                     </div>
                                 </div>
                             </div>
                 
                             <!-- Slide 9 -->
+
                             <div class="swiper-slide">
                                 <div class="relative hover-item">
-                                    <img src="./images/villa-1.jpg" alt="Milko Co-Working Building">
+                                    <img src="./images/car wash centure ksa (1).jpg" alt="Milko Co-Working Building">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Milko Co-Working Building</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        <a href="#" class="openModal" data-modal="modal9">See project <span>→</span></a>
+                                        <h2>Car Wash Centre KSA - Unit 1</h2>
+                                        <p>State-of-the-art automotive service facility in Saudi Arabia.</p>
+                                        <a href="#" class="openModal" data-modal="modal5">See project <span>→</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -1053,18 +1126,52 @@
                                     <img src="./images/the noodle house (4).jpg" alt="Modern Office Space">
                                     <div class="hover-overlay"></div>
                                     <div class="overlay-content">
-                                        <h2>Modern Office Space</h2>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <h2>The Noodle House</h2>
+                                        <p>A vibrant restaurant with authentic Asian-inspired design.</p>
                                         <a href="#" class="openModal" data-modal="modal10">See project <span>→</span></a>
                                     </div>
                                 </div>
                             </div>
+                            <div class="swiper-slide">
+                                <div class="relative hover-item">
+                                    <img src="./images/office-uae  (2).jpg" alt="Modern Office Space">
+                                    <div class="hover-overlay"></div>
+                                    <div class="overlay-content">
+                                        <h2>Office UAE - Tower 1</h2>
+                                        <p>Modern corporate office with open-plan workspaces.</p>
+                                        <a href="#" class="openModal" data-modal="modal11">See project <span>→</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="relative hover-item">
+                                    <img src="./images/office-uae  (3).jpg" alt="Modern Office Space">
+                                    <div class="hover-overlay"></div>
+                                    <div class="overlay-content">
+                                        <h2>Office UAE - Tower 2</h2>
+                                        <p>High-tech office space with smart building features.</p>
+                                        <a href="#" class="openModal" data-modal="modal12">See project <span>→</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="swiper-slide">
+                                <div class="relative hover-item">
+                                    <img src="./images/blue mart uae (1).jpg" alt="Milko Co-Working Building">
+                                    <div class="hover-overlay"></div>
+                                    <div class="overlay-content">
+                                        <h2>Blue Mart UAE - Phase 1</h2>
+                                        <p>A sleek commercial hub designed for modern retail in Dubai.</p>
+                                        <a href="#" class="openModal" data-modal="modal1">See project <span>→</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                 
-                        <!-- Swiper Pagination -->
-                        <div class="swiper-pagination"></div>
                     </div>
                 </section>
+                
 
   <!-- Project Modals -->
     <style>
@@ -1396,6 +1503,63 @@
             </div>
         </div>
     </section>
+    <section id="modal11" class="modal">
+        <div class="modal-container">
+            <button class="closeModal">×</button>
+            <div class="modal-content">
+                <img src="./images/office-uae  (2).jpg" alt="Modern Office Space">
+                <div>
+                    <h2>Modern Office Space</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <div class="modal-details">
+                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                        <p><span class="font-semibold">Budget:</span> $900,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="modal12" class="modal">
+        <div class="modal-container">
+            <button class="closeModal">×</button>
+            <div class="modal-content">
+                <img src="./images/office-uae  (3).jpg" alt="Modern Office Space">
+                <div>
+                    <h2>Modern Office Space</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <div class="modal-details">
+                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                        <p><span class="font-semibold">Budget:</span> $900,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="modal13" class="modal">
+        <div class="modal-container">
+            <button class="closeModal">×</button>
+            <div class="modal-content">
+                <img src="./images/office-uae  (5).jpg" alt="Modern Office Space">
+                <div>
+                    <h2>Modern Office Space</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <div class="modal-details">
+                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
+                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
+                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
+                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
+                        <p><span class="font-semibold">Budget:</span> $900,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const openModalButtons = document.querySelectorAll('.openModal');
@@ -1695,11 +1859,14 @@
                     </form>
             
                     <!-- Contact Details -->
-                    <div class="details">
-                        <p>📍 Melbourne, VIC 3000, Australia</p>
-                        <p class="mt-2">📧 <a href="mailto:info@retrofitstudio.co">info@retrofitstudio.co</a></p>
-                        <p class="mt-2">📞 <span>+99 (0) 344 956 4050</span></p>
+                    <div class="details text-white">
+                        <p>📍 <a href="https://www.google.com/maps?q=Dubai,VIC+3000,UAE" target="_blank" class="hover:underline">
+                            Dubai, VIC 3000, UAE
+                        </a></p>
+                        <p class="mt-2">📧 <a href="mailto:info@retrofitstudio.co" class="hover:underline">info@retrofitstudio.co</a></p>
+                        <p class="mt-2">📞 <a href="tel:+993449564050" class="hover:underline">+99 (0) 344 956 4050</a></p>
                     </div>
+
             
                     <!-- Social Links -->
                     <div class="social-links">
@@ -1729,82 +1896,182 @@
             });
             </script>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class=" text-white py-16">
-            <div class="w-[90%]  mx-auto px-6">
-                <h2 class="text-center text-3xl font-bold mb-8">From Our Great Clients</h2>
-                <div class="swiper testimonials-swiper">
-                    <div class="swiper-wrapper">
-                        <!-- Testimonial Cards -->
-                        <div class="swiper-slide">
-                            <div class="bg-gray-800 p-6 rounded-lg relative">
-                                <div class="absolute top-1 left-1/2 transform -translate-x-1/2">
-                                    <img src="./images/men1.png" alt="Anabella Kleva" class="w-20 h-20 rounded-full border-4 border-gray-700">
-                                </div>
-                                <div class="mt-20 text-center">
-                                    <h3 class="text-xl font-semibold">Anabella Kleva</h3>
-                                    <p class="text-sm text-gray-400">Management at Envato</p>
-                                    <p class="mt-4 text-gray-300">
-                                        Sed elit quam, iaculis sed semper sit amet udin vitae nibh at magna akal semper.
-                                    </p>
-                                    <span class="text-4xl text-yellow-400 absolute top-6 right-6">”</span>
-                                </div>
-                            </div>
+            <section id="featured-projects">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card animate-on-scroll">
+                        <img src="./images/blue mart uae (2).jpg" alt="Project 1">
+                        <div class="project-info">
+                            <h3>Blue Mart UAE</h3>
+                            <p>Modern commercial space</p>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="bg-gray-800 p-6 rounded-lg relative">
-                                <div class="absolute top-1 left-1/2 transform -translate-x-1/2">
-                                    <img src="./images/men1.png" alt="Anabella Kleva" class="w-20 h-20 rounded-full border-4 border-gray-700">
-                                </div>
-                                <div class="mt-20 text-center">
-                                    <h3 class="text-xl font-semibold">Anabella Kleva</h3>
-                                    <p class="text-sm text-gray-400">Management at Envato</p>
-                                    <p class="mt-4 text-gray-300">
-                                        Sed elit quam, iaculis sed semper sit amet udin vitae nibh at magna akal semper.
-                                    </p>
-                                    <span class="text-4xl text-yellow-400 absolute top-6 right-6">”</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="bg-gray-800 p-6 rounded-lg relative">
-                                <div class="absolute top-1 left-1/2 transform -translate-x-1/2">
-                                    <img src="./images/men1.png" alt="Anabella Kleva" class="w-20 h-20 rounded-full border-4 border-gray-700">
-                                </div>
-                                <div class="mt-20 text-center">
-                                    <h3 class="text-xl font-semibold">Anabella Kleva</h3>
-                                    <p class="text-sm text-gray-400">Management at Envato</p>
-                                    <p class="mt-4 text-gray-300">
-                                        Sed elit quam, iaculis sed semper sit amet udin vitae nibh at magna akal semper.
-                                    </p>
-                                    <span class="text-4xl text-yellow-400 absolute top-6 right-6">”</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="bg-gray-800 p-6 rounded-lg relative">
-                                <div class="absolute top-1 left-1/2 transform -translate-x-1/2">
-                                    <img src="./images/men1.png" alt="Anabella Kleva" class="w-20 h-20 rounded-full border-4 border-gray-700">
-                                </div>
-                                <div class="mt-20 text-center">
-                                    <h3 class="text-xl font-semibold">Anabella Kleva</h3>
-                                    <p class="text-sm text-gray-400">Management at Envato</p>
-                                    <p class="mt-4 text-gray-300">
-                                        Sed elit quam, iaculis sed semper sit amet udin vitae nibh at magna akal semper.
-                                    </p>
-                                    <span class="text-4xl text-yellow-400 absolute top-6 right-6">”</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Repeat for other testimonials -->
                     </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    <div class="project-card animate-on-scroll">
+                        <img src="./images/sangeetha dubai (3).jpg" alt="Project 2">
+                        <div class="project-info">
+                            <h3>Bright Apollo</h3>
+                            <p>Residential villa</p>
+                        </div>
+                    </div>
+                    <div class="project-card animate-on-scroll">
+                        <img src="./images/office-uae  (3).jpg" alt="Project 3">
+                        <div class="project-info">
+                            <h3>Noodle Office</h3>
+                            <p>Service facility</p>
+                        </div>
+                    </div>
+                    <div class="project-card animate-on-scroll">
+                        <img src="./images/villa-1.jpg" alt="Project 4">
+                        <div class="project-info">
+                            <h3>Villa Retreat</h3>
+                            <p>Luxury residence</p>
+                        </div>
+                    </div>
+                    <div class="project-card animate-on-scroll">
+                        <img src="./images/the noodle house (4).jpg" alt="Project 5">
+                        <div class="project-info">
+                            <h3>Noodle House</h3>
+                            <p>Restaurant design</p>
+                        </div>
+                    </div>
+                    <div class="project-card animate-on-scroll">
+                        <img src="./images/blue mart uae (3).jpg" alt="Project 6">
+                        <div class="project-info">
+                            <h3>Blue Mart UAE</h3>
+                            <p>Modern commercial space</p>
+                        </div>
+                    </div>
+                    <div class="project-card animate-on-scroll">
+                        <img src="./images/sangeetha restaurant abudhabijpg (2).jpg" alt="Project 7">
+                        <div class="project-info">
+                            <h3>Sangeetha Abu Dhabi</h3>
+                            <p>Restaurant design</p>
+                        </div>
+                    </div>
+                    <div class="project-card animate-on-scroll">
+                        <img src="./images/car wash centure ksa (3).jpg" alt="Project 8">
+                        <div class="project-info">
+                            <h3>Car Wash KSA</h3>
+                            <p>Service facility</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-          
-        </section>
+            </section>
+            <style>
+                #featured-projects {
+                    background: #121212;
+                    padding: 4rem 1.5rem;
+                    color: #FFFFFF;
+                    text-align: center;
+                }
+            
+                #featured-projects h2 {
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    color: #00C4B4;
+                    margin-bottom: 2rem;
+                    text-shadow: 0 0 10px rgba(0, 196, 180, 0.5);
+                }
+            
+                .projects-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 2rem;
+                    max-width: 1280px;
+                    margin: 0 auto;
+                }
+            
+                .project-card {
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 1rem;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                    opacity: 0;
+                    transform: translateY(50px);
+                    transition: all 0.4s ease;
+                }
+            
+                .project-card.active {
+                    opacity: 1;
+                    transform: translateY(0);
+                    animation: projectPop 0.8s ease-out forwards;
+                }
+            
+                .project-card img {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    transition: transform 0.5s ease;
+                }
+            
+                .project-card:hover img {
+                    transform: scale(1.1);
+                }
+            
+                .project-info {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: rgba(0, 0, 0, 0.7);
+                    padding: 1rem;
+                    color: #FFFFFF;
+                    transform: translateY(100%);
+                    transition: transform 0.4s ease;
+                }
+            
+                .project-card:hover .project-info {
+                    transform: translateY(0);
+                }
+            
+                .project-info h3 {
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                }
+            
+                .project-info p {
+                    font-size: 0.875rem;
+                    color: #B2EBF2;
+                }
+            
+                @keyframes projectPop {
+                    0% { opacity: 0; transform: translateY(50px) rotateX(20deg); }
+                    60% { transform: translateY(-10px) rotateX(-5deg); }
+                    100% { opacity: 1; transform: translateY(0) rotateX(0); }
+                }
+            
+                @media (min-width: 768px) { #featured-projects { padding: 4rem 3rem; } }
+                @media (min-width: 1024px) { #featured-projects { padding: 4rem 6rem; } }
+                @media (min-width: 1280px) { #featured-projects { padding: 4rem 9rem; } }
+            </style>
+            <script>
+                // Function to check if an element is in the viewport
+                function isInViewport(element) {
+                    const rect = element.getBoundingClientRect();
+                    return (
+                        rect.top >= 0 &&
+                        rect.left >= 0 &&
+                        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                    );
+                }
+            
+                // Function to handle scroll events
+                function handleScroll() {
+                    const projectCards = document.querySelectorAll('.project-card');
+                    projectCards.forEach(card => {
+                        if (isInViewport(card)) {
+                            card.classList.add('active');
+                        }
+                    });
+                }
+            
+                // Add scroll event listener
+                window.addEventListener('scroll', handleScroll);
+            
+                // Trigger the scroll handler on page load to check for visible cards
+                handleScroll();
+            </script>
 </section>
 
 <!-- Footer -->
@@ -1859,6 +2126,7 @@
             },
         });
     </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
 </body>
