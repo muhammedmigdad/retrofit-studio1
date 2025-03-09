@@ -342,7 +342,7 @@
         /* WhatsApp Floating Button Styles */
         .whatsapp-container {
             position: fixed;
-            top: 650px;
+            bottom: 20px; /* Responsive positioning */
             right: -100px; /* Initially hidden */
             z-index: 50;
             display: flex;
@@ -402,6 +402,7 @@
             white-space: nowrap;
         }
 
+        /* Show tooltip on hover */
         .whatsapp-container:hover .whatsapp-note {
             opacity: 1;
             transform: translateX(0);
@@ -413,16 +414,47 @@
             50% { transform: translateY(-10px); }
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .whatsapp-container {
+                bottom: 15px; /* Adjust for mobile */
+                right: 15px; /* Align to right for mobile */
+            }
+            .whatsapp-button {
+                width: 50px;
+                height: 50px;
+            }
+            .whatsapp-button img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .whatsapp-container {
+                bottom: 10px;
+                right: 10px;
+            }
+            .whatsapp-button {
+                width: 45px;
+                height: 45px;
+            }
+            .whatsapp-button img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
     </style>
-    <!-- WhatsApp Floating Button -->
-    <div class="whatsapp-container" id="whatsapp-container">
-        <div class="whatsapp-note">Chat with us on WhatsApp!</div>
-        <div class="whatsapp-button">
-            <a href="https://wa.me/+917902467062" target="_blank" rel="noopener noreferrer">
-                <img src="./images/whatsapp2.png" alt="WhatsApp">
-            </a>
+        <!-- WhatsApp Floating Button -->
+        <div class="whatsapp-container" id="whatsapp-container">
+            <div class="whatsapp-note">Chat with us on WhatsApp!</div>
+            <div class="whatsapp-button">
+                <a href="https://wa.me/+917902467062" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/whatsapp2.png" alt="WhatsApp">
+                </a>
+            </div>
         </div>
-    </div>
 
 
     <script>
