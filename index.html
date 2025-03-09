@@ -339,6 +339,123 @@
         </div>
     </nav>
     <style>
+        /* WhatsApp Floating Button Styles */
+        .whatsapp-container {
+            position: fixed;
+            top: 720px;
+            right: -100px; /* Initially hidden */
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+            opacity: 0; /* Hidden on load */
+        }
+
+        /* Slide-in effect on page load */
+        .whatsapp-container.active {
+            right: 20px; /* Visible position */
+            opacity: 1;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            padding: 10px;
+            background-color: #25D366;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: bounce 1.5s infinite; /* Continuous bounce */
+        }
+
+        /* Hover Effects */
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(37, 211, 102, 0.6);
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp-button img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Tooltip (Message on Hover) */
+        .whatsapp-note {
+            background-color: white;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 8px 0 0 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-right: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .whatsapp-container:hover .whatsapp-note {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Bounce effect */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+    </style>
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-container" id="whatsapp-container">
+        <div class="whatsapp-note">Chat with us on WhatsApp!</div>
+        <div class="whatsapp-button">
+            <a href="https://wa.me/+917902467062" target="_blank" rel="noopener noreferrer">
+                <img src="./images/whatsapp2.png" alt="WhatsApp">
+            </a>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const whatsappContainer = document.getElementById('whatsapp-container');
+        
+            // Slide-in animation for WhatsApp button
+            setTimeout(() => {
+                whatsappContainer.classList.add('active');
+            }, 500);
+        
+            // Wrap images with 'whatsapp-image' class in a WhatsApp link
+            const whatsAppImages = document.querySelectorAll('.whatsapp-image');
+            const phoneNumber = '+917902467062';
+        
+            whatsAppImages.forEach(image => {
+                // Prevent duplicate wrapping
+                if (!image.closest('a')) {
+                    const a = document.createElement('a');
+                    a.href = `https://wa.me/${phoneNumber}`;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+        
+                    // Clone the image to avoid direct DOM modification issues
+                    const clonedImage = image.cloneNode(true);
+                    a.appendChild(clonedImage);
+                    image.replaceWith(a);
+                }
+            });
+        });
+    </script>
+
+    <style>
         /* Base Styles */
         header {
             position: relative;
@@ -2126,6 +2243,7 @@
             },
         });
     </script>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
