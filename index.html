@@ -342,7 +342,7 @@
         /* WhatsApp Floating Button Styles */
         .whatsapp-container {
             position: fixed;
-            bottom: 50px; /* Responsive positioning */
+            bottom: 30px; /* Responsive positioning */
             right: -100px; /* Initially hidden */
             z-index: 50;
             display: flex;
@@ -432,7 +432,7 @@
 
         @media (max-width: 480px) {
             .whatsapp-container {
-                bottom: 100px;
+                bottom: 60px;
                 right: 10px;
             }
             .whatsapp-button {
@@ -450,7 +450,7 @@
         <div class="whatsapp-container" id="whatsapp-container">
             <div class="whatsapp-note">Chat with us on WhatsApp!</div>
             <div class="whatsapp-button">
-                <a href="https://wa.me/+917902467062" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/+971554785344" target="_blank" rel="noopener noreferrer">
                     <img src="./images/whatsapp2.png" alt="WhatsApp">
                 </a>
             </div>
@@ -468,7 +468,7 @@
         
             // Wrap images with 'whatsapp-image' class in a WhatsApp link
             const whatsAppImages = document.querySelectorAll('.whatsapp-image');
-            const phoneNumber = '+917902467062';
+            const phoneNumber = '+971554785344';
         
             whatsAppImages.forEach(image => {
                 // Prevent duplicate wrapping
@@ -933,6 +933,11 @@
             
             <section id="about">
                 <div class="about-container">
+                    <!-- Image Content -->
+                    <div class="image-content animate-on-scroll">
+                        <img src="./images/care & cure uae (1).jpg" alt="Retrofit Studio Design">
+                    </div>
+                    
                     <!-- Text Content -->
                     <div class="text-content animate-on-scroll">
                         <h3>About Us</h3>
@@ -956,10 +961,7 @@
                         </div>
                     </div>
             
-                    <!-- Image Content -->
-                    <div class="image-content animate-on-scroll">
-                        <img src="./images/care & cure uae (1).jpg" alt="Retrofit Studio Design">
-                    </div>
+
                 </div>
             </section>
             
@@ -982,345 +984,403 @@
             </script>
 
             <style>
-                /* Base Styles */
-                #projects {
-                    color: #FFFFFF;
-                    padding: 4rem 1.5rem;
-                    background: #121212; /* Dark background for contrast */
-                    overflow: hidden;
-                }
-                
-                .swiper {
-                    margin: 2rem 0;
-                    position: relative;
-                }
-                
-                .swiper-wrapper {
-                    display: flex;
-                }
-                
-                .swiper-slide {
-                    flex-shrink: 0;
-                    width: 100%;
-                    max-width: 400px; /* Adjust as needed for Swiper layout */
-                }
-                
-                /* Hover Item */
-                .hover-item {
-                    position: relative;
-                    overflow: hidden;
-                    border-radius: 1rem;
-                    transition: transform 0.4s ease, box-shadow 0.4s ease;
-                }
-                
-                .hover-item img {
-                    width: 100%;
-                    height: 16rem; /* h-64 */
-                    object-fit: cover;
-                    border-radius: 1rem;
-                    transition: transform 0.5s ease, filter 0.5s ease;
-                }
-                
-                @media (min-width: 768px) {
-                    .hover-item img { height: 20rem; } /* md:h-80 */
-                }
-                
-                @media (min-width: 1024px) {
-                    .hover-item img { height: 24rem; } /* lg:h-96 */
-                }
-                
-                /* Overlay */
-                .hover-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
-                    opacity: 1;
-                    transition: background 0.5s ease, opacity 0.5s ease;
-                }
-                
-                /* Overlay Content */
-                .hover-item .overlay-content {
-                    position: absolute;
-                    bottom: 1rem;
-                    left: 1rem;
-                    right: 1rem;
-                    color: #FFFFFF;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: all 0.4s ease;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-                }
-                
-                .overlay-content h2 {
-                    font-size: 1.25rem; /* text-xl */
-                    font-weight: bold;
-                    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-                }
-                
-                @media (min-width: 768px) {
-                    .overlay-content h2 { font-size: 1.5rem; } /* md:text-2xl */
-                }
-                
-                .overlay-content p {
-                    font-size: 0.875rem; /* text-sm */
-                    font-weight: medium;
-                    color: #B2EBF2; /* Light cyan */
-                }
-                
-                .overlay-content a {
-                    font-size: 1.25rem; /* text-xl */
-                    font-weight: 600;
-                    color: #00C4B4; /* Teal */
-                    display: flex;
-                    align-items: center;
-                    text-decoration: none;
-                    transition: all 0.4s ease;
-                }
-                
-                .overlay-content a span {
-                    margin-left: 0.25rem;
-                    transition: transform 0.4s ease;
-                }
-                
-                /* Hover Effects */
-                .hover-item:hover {
-                    transform: scale(1.05) rotate(1deg);
-                    box-shadow: 0 8px 24px rgba(0, 196, 180, 0.3);
-                }
-                
-                .hover-item:hover img {
-                    transform: scale(1.1);
-                    filter: brightness(1.1);
-                }
-                
-                .hover-item:hover .hover-overlay {
-                    background: linear-gradient(to bottom, rgba(0, 196, 180, 0.4), rgba(0, 0, 0, 0.7));
-                    opacity: 0.9;
-                }
-                
-                .hover-item:hover .overlay-content {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                
-                .hover-item:hover .overlay-content a {
-                    color: #FFFFFF;
-                    text-shadow: 0 0 10px rgba(0, 196, 180, 0.8);
-                }
-                
-                .hover-item:hover .overlay-content a span {
-                    transform: translateX(5px) rotate(45deg);
-                }
-                
-                /* Swiper Pagination */
-                .swiper-pagination {
-                    position: absolute;
-                    bottom: 1rem;
-                    text-align: center;
-                }
-                
-                .swiper-pagination-bullet {
-                    background: #80DEEA; /* Light cyan */
-                    opacity: 0.7;
-                    transition: all 0.3s ease;
-                }
-                
-                .swiper-pagination-bullet-active {
-                    background: #00C4B4; /* Teal */
-                    opacity: 1;
-                    transform: scale(1.2);
-                }
-                
-                /* Responsive Padding */
-                @media (min-width: 768px) {
-                    #projects { padding: 4rem 3rem; }
-                }
-                
-                @media (min-width: 1024px) {
-                    #projects { padding: 4rem 6rem; }
-                }
-                
-                @media (min-width: 1280px) {
-                    #projects { padding: 4rem 9rem; }
-                }
+                    /* Base Styles */
+                    #projects {
+                        color: #FFFFFF;
+                        padding: 4rem 1.5rem;
+                        background: #121212;
+                        overflow: hidden;
+                    }
+            
+                    .swiper {
+                        margin: 2rem 0;
+                        position: relative;
+                    }
+            
+                    .swiper-wrapper {
+                        display: flex;
+                    }
+            
+                    .swiper-slide {
+                        flex-shrink: 0;
+                        width: 100%;
+                        max-width: 400px;
+                    }
+            
+                    .hover-item {
+                        position: relative;
+                        overflow: hidden;
+                        border-radius: 1rem;
+                        transition: transform 0.4s ease, box-shadow 0.4s ease;
+                    }
+            
+                    .hover-item img {
+                        width: 100%;
+                        height: 16rem;
+                        object-fit: cover;
+                        border-radius: 1rem;
+                        transition: transform 0.5s ease, filter 0.5s ease;
+                    }
+            
+                    @media (min-width: 768px) {
+                        .hover-item img { height: 20rem; }
+                    }
+            
+                    @media (min-width: 1024px) {
+                        .hover-item img { height: 24rem; }
+                    }
+            
+                    .hover-overlay {
+                        position: absolute;
+                        inset: 0;
+                        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+                        opacity: 1;
+                        transition: background 0.5s ease, opacity 0.5s ease;
+                    }
+            
+                    .hover-item .overlay-content {
+                        position: absolute;
+                        bottom: 1rem;
+                        left: 1rem;
+                        right: 1rem;
+                        color: #FFFFFF;
+                        opacity: 0;
+                        transform: translateY(20px);
+                        transition: all 0.4s ease;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+            
+                    .overlay-content h2 {
+                        font-size: 1.25rem;
+                        font-weight: bold;
+                        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                    }
+            
+                    @media (min-width: 768px) {
+                        .overlay-content h2 { font-size: 1.5rem; }
+                    }
+            
+                    .overlay-content p {
+                        font-size: 0.875rem;
+                        font-weight: medium;
+                        color: #B2EBF2;
+                    }
+            
+                    .overlay-content a {
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        color: #00C4B4;
+                        display: flex;
+                        align-items: center;
+                        text-decoration: none;
+                        transition: all 0.4s ease;
+                    }
+            
+                    .overlay-content a span {
+                        margin-left: 0.25rem;
+                        transition: transform 0.4s ease;
+                    }
+            
+                    .hover-item:hover {
+                        transform: scale(1.05) rotate(1deg);
+                        box-shadow: 0 8px 24px rgba(0, 196, 180, 0.3);
+                    }
+            
+                    .hover-item:hover img {
+                        transform: scale(1.1);
+                        filter: brightness(1.1);
+                    }
+            
+                    .hover-item:hover .hover-overlay {
+                        background: linear-gradient(to bottom, rgba(0, 196, 180, 0.4), rgba(0, 0, 0, 0.7));
+                        opacity: 0.9;
+                    }
+            
+                    .hover-item:hover .overlay-content {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+            
+                    .hover-item:hover .overlay-content a {
+                        color: #FFFFFF;
+                        text-shadow: 0 0 10px rgba(0, 196, 180, 0.8);
+                    }
+            
+                    .hover-item:hover .overlay-content a span {
+                        transform: translateX(5px) rotate(45deg);
+                        animation: bounce 0.5s ease-in-out;
+                    }
+            
+                    .swiper-pagination {
+                        position: absolute;
+                        bottom: 1rem;
+                        text-align: center;
+                    }
+            
+                    .swiper-pagination-bullet {
+                        background: #80DEEA;
+                        opacity: 0.7;
+                        transition: all 0.3s ease;
+                    }
+            
+                    .swiper-pagination-bullet-active {
+                        background: #00C4B4;
+                        opacity: 1;
+                        transform: scale(1.2);
+                    }
+            
+                    @media (min-width: 768px) {
+                        #projects { padding: 4rem 3rem; }
+                    }
+            
+                    @media (min-width: 1024px) {
+                        #projects { padding: 4rem 6rem; }
+                    }
+            
+                    @media (min-width: 1280px) {
+                        #projects { padding: 4rem 9rem; }
+                    }
+            
+                    /* Swiper Navigation Buttons */
+                    .swiper-button-next,
+                    .swiper-button-prev {
+                        color: #00C4B4;
+                        background-color: rgba(255, 255, 255, 0.8);
+                        border-radius: 50%;
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all 0.3s ease;
+                    }
+            
+                    .swiper-button-next::after,
+                    .swiper-button-prev::after {
+                        font-family: 'FontAwesome';
+                        font-size: 1.5rem;
+                    }
+            
+                    .swiper-button-next::after {
+                        content: '\f054';
+                    }
+            
+                    .swiper-button-prev::after {
+                        content: '\f053';
+                    }
+            
+                    .swiper-button-next:hover,
+                    .swiper-button-prev:hover {
+                        transform: scale(1.1);
+                        color: #FFFFFF;
+                        background-color: #00C4B4;
+                        box-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+                    }
+            
+                    /* Animation for Icons */
+                    @keyframes bounce {
+                        0%, 100% {
+                            transform: translateX(0);
+                        }
+                        50% {
+                            transform: translateX(10px);
+                        }
+                    }
+            
+                    .swiper-button-next:hover::after {
+                        animation: bounce 0.5s ease-in-out;
+                    }
+            
+                    .swiper-button-prev:hover::after {
+                        animation: bounce 0.5s ease-in-out;
+                    }
                 </style>
-                
-                <!-- Projects Section -->
-                <section id="projects" class="text-white">
-                    <div class="swiper my-8">
-                        <div class="swiper-wrapper">
-                            <!-- Slide 1 -->
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/office-uae  (5).jpg" alt="Modern Office Space">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Office UAE - Tower 3</h2>
-                                        <p>Premium office design with panoramic city vistas.</p>
-                                        <a href="#" class="openModal" data-modal="modal13">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Slide 2 -->
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/blue mart uae (2).jpg" alt="Modern Office Space">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Blue Mart UAE - Phase 2</h2>
-                                        <p>Expanded retail space with innovative interior layouts.</p>
-                                        <a href="#" class="openModal" data-modal="modal2">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Slide 3 -->
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/blue mart uae (3).jpg" alt="Milko Co-Working Building">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Blue Mart UAE - Phase 3</h2>
-                                        <p>Final phase featuring sustainable design elements.</p>
-                                        <a href="#" class="openModal" data-modal="modal3">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Slide 4 -->
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/bright appolo -uae-dubai.jpg" alt="Modern Office Space">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Bright Apollo Dubai</h2>
-                                        <p>A luxurious residential villa with panoramic city views.</p>
-                                        <a href="#" class="openModal" data-modal="modal4">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Slide 5 -->
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/villa-1.jpg" alt="Milko Co-Working Building">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Villa Serenity</h2>
-                                        <p>A tranquil luxury residence surrounded by nature.</p>
-                                        <a href="#" class="openModal" data-modal="modal9">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Slide 6 -->
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/car wash centure ksa (2).jpg" alt="Modern Office Space">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Car Wash Centre KSA - Unit 2</h2>
-                                        <p>Second unit with eco-friendly water recycling systems.</p>
-                                        <a href="#" class="openModal" data-modal="modal6">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Slide 7 -->
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/car wash centure ksa (3).jpg" alt="Milko Co-Working Building">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Car Wash Centre KSA - Unit 3</h2>
-                                        <p>Advanced cleaning technology for high-volume traffic.</p>
-                                        <a href="#" class="openModal" data-modal="modal7">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Slide 8 -->
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/car wash centure ksa (4).jpg" alt="Modern Office Space">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Car Wash Centre KSA - Unit 4</h2>
-                                        <p>Final unit with premium customer lounge features.</p>
-                                        <a href="#" class="openModal" data-modal="modal8">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Slide 9 -->
+<!-- Projects Section -->
+<section id="projects" class="text-white">
+    <h1 class="text-center text-2xl md:text-4xl lg:text-5xl font-bold text-[#00C4B4] drop-shadow-[0_0_10px_rgba(0,196,180,0.7)]">
+        Projects
+    </h1>
+    <div class="swiper my-8">
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
 
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/car wash centure ksa (1).jpg" alt="Milko Co-Working Building">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Car Wash Centre KSA - Unit 1</h2>
-                                        <p>State-of-the-art automotive service facility in Saudi Arabia.</p>
-                                        <a href="#" class="openModal" data-modal="modal5">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <!-- Slide 10 -->
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/the noodle house (4).jpg" alt="Modern Office Space">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>The Noodle House</h2>
-                                        <p>A vibrant restaurant with authentic Asian-inspired design.</p>
-                                        <a href="#" class="openModal" data-modal="modal10">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/office-uae  (2).jpg" alt="Modern Office Space">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Office UAE - Tower 1</h2>
-                                        <p>Modern corporate office with open-plan workspaces.</p>
-                                        <a href="#" class="openModal" data-modal="modal11">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/office-uae  (3).jpg" alt="Modern Office Space">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Office UAE - Tower 2</h2>
-                                        <p>High-tech office space with smart building features.</p>
-                                        <a href="#" class="openModal" data-modal="modal12">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="swiper-slide">
-                                <div class="relative hover-item">
-                                    <img src="./images/blue mart uae (1).jpg" alt="Milko Co-Working Building">
-                                    <div class="hover-overlay"></div>
-                                    <div class="overlay-content">
-                                        <h2>Blue Mart UAE - Phase 1</h2>
-                                        <p>A sleek commercial hub designed for modern retail in Dubai.</p>
-                                        <a href="#" class="openModal" data-modal="modal1">See project <span>→</span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                
+        <!-- Swiper Wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/office-uae  (5).jpg" alt="Modern Office Space">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Office UAE - Tower 3</h2>
+                        <p>Premium office design with panoramic city vistas.</p>
+                        <a href="#" class="openModal" data-modal="modal13">See project <span>→</span></a>
                     </div>
-                </section>
-                
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/blue mart uae (2).jpg" alt="Modern Office Space">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Blue Mart UAE - Phase 2</h2>
+                        <p>Expanded retail space with innovative interior layouts.</p>
+                        <a href="#" class="openModal" data-modal="modal2">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/blue mart uae (3).jpg" alt="Milko Co-Working Building">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Blue Mart UAE - Phase 3</h2>
+                        <p>Final phase featuring sustainable design elements.</p>
+                        <a href="#" class="openModal" data-modal="modal3">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/bright appolo -uae-dubai.jpg" alt="Modern Office Space">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Bright Apollo Dubai</h2>
+                        <p>A luxurious residential villa with panoramic city views.</p>
+                        <a href="#" class="openModal" data-modal="modal4">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/villa-1.jpg" alt="Milko Co-Working Building">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Villa Serenity</h2>
+                        <p>A tranquil luxury residence surrounded by nature.</p>
+                        <a href="#" class="openModal" data-modal="modal9">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/car wash centure ksa (2).jpg" alt="Modern Office Space">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Car Wash Centre KSA - Unit 2</h2>
+                        <p>Second unit with eco-friendly water recycling systems.</p>
+                        <a href="#" class="openModal" data-modal="modal6">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/car wash centure ksa (3).jpg" alt="Milko Co-Working Building">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Car Wash Centre KSA - Unit 3</h2>
+                        <p>Advanced cleaning technology for high-volume traffic.</p>
+                        <a href="#" class="openModal" data-modal="modal7">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/car wash centure ksa (4).jpg" alt="Modern Office Space">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Car Wash Centre KSA - Unit 4</h2>
+                        <p>Final unit with premium customer lounge features.</p>
+                        <a href="#" class="openModal" data-modal="modal8">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/car wash centure ksa (1).jpg" alt="Milko Co-Working Building">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Car Wash Centre KSA - Unit 1</h2>
+                        <p>State-of-the-art automotive service facility in Saudi Arabia.</p>
+                        <a href="#" class="openModal" data-modal="modal5">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/the noodle house (4).jpg" alt="Modern Office Space">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>The Noodle House</h2>
+                        <p>A vibrant restaurant with authentic Asian-inspired design.</p>
+                        <a href="#" class="openModal" data-modal="modal10">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/office-uae  (2).jpg" alt="Modern Office Space">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Office UAE - Tower 1</h2>
+                        <p>Modern corporate office with open-plan workspaces.</p>
+                        <a href="#" class="openModal" data-modal="modal11">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/office-uae  (3).jpg" alt="Modern Office Space">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Office UAE - Tower 2</h2>
+                        <p>High-tech office space with smart building features.</p>
+                        <a href="#" class="openModal" data-modal="modal12">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 13 -->
+            <div class="swiper-slide">
+                <div class="relative hover-item">
+                    <img src="./images/blue mart uae (1).jpg" alt="Milko Co-Working Building">
+                    <div class="hover-overlay"></div>
+                    <div class="overlay-content">
+                        <h2>Blue Mart UAE - Phase 1</h2>
+                        <p>A sleek commercial hub designed for modern retail in Dubai.</p>
+                        <a href="#" class="openModal" data-modal="modal1">See project <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
   <!-- Project Modals -->
     <style>
@@ -2247,32 +2307,15 @@
                 el: '.swiper-pagination',
                 clickable: true,
             },
-            breakpoints: {
-                640: { slidesPerView: 2, spaceBetween: 15 },
-                1024: { slidesPerView: 3, spaceBetween: 20 },
-                1280: { slidesPerView: 4, spaceBetween: 25 }
-            }
-        });
-
-        // Initialize Testimonials Swiper
-        var testimonialsSwiper = new Swiper('.testimonials-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
             breakpoints: {
-                640: { slidesPerView: 1 }, // 1 slide for mobile
-                768: { slidesPerView: 2 }, // 2 slides for tablets
-                1024: { slidesPerView: 3 }, // 3 slides for desktops
-                1280: { slidesPerView: 3 }  // 3 slides for large screens
-            },
+                640: { slidesPerView: 2, spaceBetween: 15 },
+                1024: { slidesPerView: 3, spaceBetween: 20 },
+                1280: { slidesPerView: 4, spaceBetween: 25 }
+            }
         });
     </script>
 
