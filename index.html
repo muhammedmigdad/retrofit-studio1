@@ -984,832 +984,634 @@
             </script>
 
             <style>
-                    /* Base Styles */
-                    #projects {
-                        color: #FFFFFF;
-                        padding: 4rem 1.5rem;
-                        background: #121212;
-                        overflow: hidden;
-                    }
-            
-                    .swiper {
-                        margin: 2rem 0;
-                        position: relative;
-                    }
-            
-                    .swiper-wrapper {
-                        display: flex;
-                    }
-            
-                    .swiper-slide {
-                        flex-shrink: 0;
-                        width: 100%;
-                        max-width: 400px;
-                    }
-            
-                    .hover-item {
-                        position: relative;
-                        overflow: hidden;
-                        border-radius: 1rem;
-                        transition: transform 0.4s ease, box-shadow 0.4s ease;
-                    }
-            
-                    .hover-item img {
-                        width: 100%;
-                        height: 16rem;
-                        object-fit: cover;
-                        border-radius: 1rem;
-                        transition: transform 0.5s ease, filter 0.5s ease;
-                    }
-            
-                    @media (min-width: 768px) {
-                        .hover-item img { height: 20rem; }
-                    }
-            
-                    @media (min-width: 1024px) {
-                        .hover-item img { height: 24rem; }
-                    }
-            
-                    .hover-overlay {
-                        position: absolute;
-                        inset: 0;
-                        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
-                        opacity: 1;
-                        transition: background 0.5s ease, opacity 0.5s ease;
-                    }
-            
-                    .hover-item .overlay-content {
-                        position: absolute;
-                        bottom: 1rem;
-                        left: 1rem;
-                        right: 1rem;
-                        color: #FFFFFF;
-                        opacity: 0;
-                        transform: translateY(20px);
-                        transition: all 0.4s ease;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 0.5rem;
-                    }
-            
-                    .overlay-content h2 {
-                        font-size: 1.25rem;
-                        font-weight: bold;
-                        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-                    }
-            
-                    @media (min-width: 768px) {
-                        .overlay-content h2 { font-size: 1.5rem; }
-                    }
-            
-                    .overlay-content p {
-                        font-size: 0.875rem;
-                        font-weight: medium;
-                        color: #B2EBF2;
-                    }
-            
-                    .overlay-content a {
-                        font-size: 1.25rem;
-                        font-weight: 600;
-                        color: #00C4B4;
-                        display: flex;
-                        align-items: center;
-                        text-decoration: none;
-                        transition: all 0.4s ease;
-                    }
-            
-                    .overlay-content a span {
-                        margin-left: 0.25rem;
-                        transition: transform 0.4s ease;
-                    }
-            
-                    .hover-item:hover {
-                        transform: scale(1.05) rotate(1deg);
-                        box-shadow: 0 8px 24px rgba(0, 196, 180, 0.3);
-                    }
-            
-                    .hover-item:hover img {
-                        transform: scale(1.1);
-                        filter: brightness(1.1);
-                    }
-            
-                    .hover-item:hover .hover-overlay {
-                        background: linear-gradient(to bottom, rgba(0, 196, 180, 0.4), rgba(0, 0, 0, 0.7));
-                        opacity: 0.9;
-                    }
-            
-                    .hover-item:hover .overlay-content {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-            
-                    .hover-item:hover .overlay-content a {
-                        color: #FFFFFF;
-                        text-shadow: 0 0 10px rgba(0, 196, 180, 0.8);
-                    }
-            
-                    .hover-item:hover .overlay-content a span {
-                        transform: translateX(5px) rotate(45deg);
-                        animation: bounce 0.5s ease-in-out;
-                    }
-            
-                    .swiper-pagination {
-                        position: absolute;
-                        bottom: 1rem;
-                        text-align: center;
-                    }
-            
-                    .swiper-pagination-bullet {
-                        background: #80DEEA;
-                        opacity: 0.7;
-                        transition: all 0.3s ease;
-                    }
-            
-                    .swiper-pagination-bullet-active {
-                        background: #00C4B4;
-                        opacity: 1;
-                        transform: scale(1.2);
-                    }
-            
-                    @media (min-width: 768px) {
-                        #projects { padding: 4rem 3rem; }
-                    }
-            
-                    @media (min-width: 1024px) {
-                        #projects { padding: 4rem 6rem; }
-                    }
-            
-                    @media (min-width: 1280px) {
-                        #projects { padding: 4rem 9rem; }
-                    }
-            
-                    /* Swiper Navigation Buttons */
-                    .swiper-button-next,
-                    .swiper-button-prev {
-                        color: #00C4B4;
-                        background-color: rgba(255, 255, 255, 0.8);
-                        border-radius: 50%;
-                        width: 40px;
-                        height: 40px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        transition: all 0.3s ease;
-                    }
-            
-                    .swiper-button-next::after,
-                    .swiper-button-prev::after {
-                        font-family: 'FontAwesome';
-                        font-size: 1.5rem;
-                    }
-            
-                    .swiper-button-next::after {
-                        content: '\f054';
-                    }
-            
-                    .swiper-button-prev::after {
-                        content: '\f053';
-                    }
-            
-                    .swiper-button-next:hover,
-                    .swiper-button-prev:hover {
-                        transform: scale(1.1);
-                        color: #FFFFFF;
-                        background-color: #00C4B4;
-                        box-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
-                    }
-            
-                    /* Animation for Icons */
-                    @keyframes bounce {
-                        0%, 100% {
-                            transform: translateX(0);
-                        }
-                        50% {
-                            transform: translateX(10px);
-                        }
-                    }
-            
-                    .swiper-button-next:hover::after {
-                        animation: bounce 0.5s ease-in-out;
-                    }
-            
-                    .swiper-button-prev:hover::after {
-                        animation: bounce 0.5s ease-in-out;
-                    }
-                </style>
-<!-- Projects Section -->
-<section id="projects" class="text-white">
-    <h1 class="text-center text-2xl md:text-4xl lg:text-5xl font-bold text-[#00C4B4] drop-shadow-[0_0_10px_rgba(0,196,180,0.7)]">
-        Projects
-    </h1>
-    <div class="swiper my-8">
-        <!-- Navigation Buttons -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-
-        <!-- Swiper Wrapper -->
-        <div class="swiper-wrapper">
-            <!-- Slide 1 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/office-uae  (5).jpg" alt="Modern Office Space">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Office UAE - Tower 3</h2>
-                        <p>Premium office design with panoramic city vistas.</p>
-                        <a href="#" class="openModal" data-modal="modal13">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/blue mart uae (2).jpg" alt="Modern Office Space">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Blue Mart UAE - Phase 2</h2>
-                        <p>Expanded retail space with innovative interior layouts.</p>
-                        <a href="#" class="openModal" data-modal="modal2">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/blue mart uae (3).jpg" alt="Milko Co-Working Building">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Blue Mart UAE - Phase 3</h2>
-                        <p>Final phase featuring sustainable design elements.</p>
-                        <a href="#" class="openModal" data-modal="modal3">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 4 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/bright appolo -uae-dubai.jpg" alt="Modern Office Space">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Bright Apollo Dubai</h2>
-                        <p>A luxurious residential villa with panoramic city views.</p>
-                        <a href="#" class="openModal" data-modal="modal4">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 5 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/villa-1.jpg" alt="Milko Co-Working Building">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Villa Serenity</h2>
-                        <p>A tranquil luxury residence surrounded by nature.</p>
-                        <a href="#" class="openModal" data-modal="modal9">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 6 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/car wash centure ksa (2).jpg" alt="Modern Office Space">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Car Wash Centre KSA - Unit 2</h2>
-                        <p>Second unit with eco-friendly water recycling systems.</p>
-                        <a href="#" class="openModal" data-modal="modal6">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 7 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/car wash centure ksa (3).jpg" alt="Milko Co-Working Building">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Car Wash Centre KSA - Unit 3</h2>
-                        <p>Advanced cleaning technology for high-volume traffic.</p>
-                        <a href="#" class="openModal" data-modal="modal7">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 8 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/car wash centure ksa (4).jpg" alt="Modern Office Space">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Car Wash Centre KSA - Unit 4</h2>
-                        <p>Final unit with premium customer lounge features.</p>
-                        <a href="#" class="openModal" data-modal="modal8">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/car wash centure ksa (1).jpg" alt="Milko Co-Working Building">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Car Wash Centre KSA - Unit 1</h2>
-                        <p>State-of-the-art automotive service facility in Saudi Arabia.</p>
-                        <a href="#" class="openModal" data-modal="modal5">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 10 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/the noodle house (4).jpg" alt="Modern Office Space">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>The Noodle House</h2>
-                        <p>A vibrant restaurant with authentic Asian-inspired design.</p>
-                        <a href="#" class="openModal" data-modal="modal10">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 11 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/office-uae  (2).jpg" alt="Modern Office Space">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Office UAE - Tower 1</h2>
-                        <p>Modern corporate office with open-plan workspaces.</p>
-                        <a href="#" class="openModal" data-modal="modal11">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 12 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/office-uae  (3).jpg" alt="Modern Office Space">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Office UAE - Tower 2</h2>
-                        <p>High-tech office space with smart building features.</p>
-                        <a href="#" class="openModal" data-modal="modal12">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 13 -->
-            <div class="swiper-slide">
-                <div class="relative hover-item">
-                    <img src="./images/blue mart uae (1).jpg" alt="Milko Co-Working Building">
-                    <div class="hover-overlay"></div>
-                    <div class="overlay-content">
-                        <h2>Blue Mart UAE - Phase 1</h2>
-                        <p>A sleek commercial hub designed for modern retail in Dubai.</p>
-                        <a href="#" class="openModal" data-modal="modal1">See project <span>→</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-  <!-- Project Modals -->
-    <style>
-    /* Modal Base Styles */
-    .modal {
-        position: fixed;
-        inset: 0;
-        z-index: 50;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 0, 0, 0.7);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-    }
-    
-    .modal.active {
-        opacity: 1;
-        visibility: visible;
-        transition: opacity 0.3s ease;
-    }
-    
-    .modal-container {
-        position: relative;
-        background: #1F2A44; /* Dark teal-gray */
-        padding: 2rem;
-        max-width: 64rem; /* max-w-4xl */
-        width: 90%;
-        border-radius: 0.75rem;
-        box-shadow: 0 8px 32px rgba(0, 196, 180, 0.2);
-        color: #FFFFFF;
-        transform: scale(0.8);
-        opacity: 0;
-        animation: modalPop 0.5s ease-out forwards;
-    }
-    
-    /* Close Button */
-    .closeModal {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        color: #80DEEA; /* Light cyan */
-        font-size: 1.5rem;
-        transition: all 0.3s ease;
-    }
-    
-    .closeModal:hover {
-        color: #00C4B4; /* Teal */
-        transform: scale(1.2) rotate(90deg);
-        text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
-    }
-    
-    /* Modal Content */
-    .modal-content {
-        display: grid;
-        gap: 1.5rem;
-    }
-    
-    @media (min-width: 768px) {
-        .modal-content {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-    
-    .modal-content img {
-        width: 100%;
-        height: auto;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        transition: transform 0.4s ease;
-    }
-    
-    .modal-content img:hover {
-        transform: scale(1.03);
-    }
-    
-    .modal-content h2 {
-        font-size: 1.5rem; /* text-2xl */
-        font-weight: bold;
-        color: #00C4B4; /* Teal */
-        text-shadow: 0 0 5px rgba(0, 196, 180, 0.5);
-    }
-    
-    .modal-content p {
-        color: #B2EBF2; /* Light cyan */
-        margin-top: 0.5rem;
-    }
-    
-    .modal-details {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .modal-details p {
-        color: #FFFFFF;
-    }
-    
-    .modal-details span.font-semibold {
-        color: #00C4B4; /* Teal */
-    }
-    
-    /* Animation Keyframes */
-    @keyframes modalPop {
-        0% { opacity: 0; transform: scale(0.8) rotateX(20deg); }
-        60% { transform: scale(1.05) rotateX(-5deg); }
-        100% { opacity: 1; transform: scale(1) rotateX(0); }
-    }
-    
-    @keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-    }
-    
-    /* Modal Active State */
-    .modal.active .modal-container {
-        animation: modalPop 0.5s ease-out forwards;
-    }
-    </style>
-    
-    <!-- Modal 1 -->
-    <section id="modal1" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/blue mart uae (1).jpg" alt="Milko Co-Working Building">
-                <div>
-                    <h2>Milko Co-Working Building</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Ethan Hunt, John Doe</p>
-                        <p><span class="font-semibold">Completion:</span> February 5th, 2019</p>
-                        <p><span class="font-semibold">Project Type:</span> Villa, Residence</p>
-                        <p><span class="font-semibold">Architects:</span> Logan Cee, Paul</p>
-                        <p><span class="font-semibold">Budget:</span> $1,200,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Modal 2 -->
-    <section id="modal2" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/blue mart uae (2).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Modal 3 -->
-    <section id="modal3" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/blue mart uae (3).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Modal 4 -->
-    <section id="modal4" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/bright appolo -uae-dubai.jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Modal 5 -->
-    <section id="modal5" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/car wash centure ksa (1).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Modal 6 -->
-    <section id="modal6" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/car wash centure ksa (2).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Modal 7 -->
-    <section id="modal7" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/car wash centure ksa (3).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Modal 8 -->
-    <section id="modal8" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/car wash centure ksa (4).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Modal 9 -->
-    <section id="modal9" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/villa-1.jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Modal 10 -->
-    <section id="modal10" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/the noodle house (4).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="modal11" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/office-uae  (2).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="modal12" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/office-uae  (3).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="modal13" class="modal">
-        <div class="modal-container">
-            <button class="closeModal">×</button>
-            <div class="modal-content">
-                <img src="./images/office-uae  (5).jpg" alt="Modern Office Space">
-                <div>
-                    <h2>Modern Office Space</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="modal-details">
-                        <p><span class="font-semibold">Clients:</span> Alex Smith, Jane Doe</p>
-                        <p><span class="font-semibold">Completion:</span> March 12th, 2021</p>
-                        <p><span class="font-semibold">Project Type:</span> Commercial, Office</p>
-                        <p><span class="font-semibold">Architects:</span> John Wick, Sarah</p>
-                        <p><span class="font-semibold">Budget:</span> $900,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const openModalButtons = document.querySelectorAll('.openModal');
-            const closeModalButtons = document.querySelectorAll('.closeModal');
-            const modals = document.querySelectorAll('.modal');
+                /* Base Styles for Projects Section */
+                #projects {
+                    color: #FFFFFF;
+                    padding: 4rem 1.5rem;
+                    background: #121212;
+                    overflow: hidden;
+                }
         
-            // Open modal
-            openModalButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const modalId = this.getAttribute('data-modal');
-                    const modal = document.getElementById(modalId);
-                    if (modal) {
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent scrolling
-                    }
-                });
-            });
+                .swiper {
+                    margin: 2rem 0;
+                    position: relative;
+                }
         
-            // Close modal
-            closeModalButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const modal = this.closest('.modal');
-                    if (modal) {
-                        modal.classList.remove('active');
-                        document.body.style.overflow = ''; // Restore scrolling
-                    }
-                });
-            });
+                .swiper-wrapper {
+                    display: flex;
+                }
         
-            // Close modal when clicking outside
-            modals.forEach(modal => {
-                modal.addEventListener('click', function (e) {
-                    if (e.target === modal) {
-                        modal.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
+                .swiper-slide {
+                    flex-shrink: 0;
+                    width: 100%;
+                    max-width: 400px;
+                }
+        
+                .hover-item {
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 1rem;
+                    transition: transform 0.4s ease, box-shadow 0.4s ease;
+                }
+        
+                .hover-item img {
+                    width: 100%;
+                    height: 16rem;
+                    object-fit: cover;
+                    border-radius: 1rem;
+                    transition: transform 0.5s ease, filter 0.5s ease;
+                }
+        
+                /* Responsive Image Heights */
+                @media (min-width: 768px) { .hover-item img { height: 20rem; } }
+                @media (min-width: 1024px) { .hover-item img { height: 24rem; } }
+        
+                .hover-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+                    opacity: 1;
+                    transition: background 0.5s ease, opacity 0.5s ease;
+                }
+        
+                .overlay-content {
+                    position: absolute;
+                    bottom: 1rem;
+                    left: 1rem;
+                    right: 1rem;
+                    color: #FFFFFF;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.4s ease;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+        
+                .overlay-content h2 {
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                }
+        
+                @media (min-width: 768px) { .overlay-content h2 { font-size: 1.5rem; } }
+        
+                .overlay-content p {
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                    color: #B2EBF2;
+                }
+        
+                .overlay-content a {
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    color: #00C4B4;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    transition: all 0.4s ease;
+                }
+        
+                .overlay-content a span {
+                    margin-left: 0.25rem;
+                    transition: transform 0.4s ease;
+                }
+        
+                /* Hover Effects */
+                .hover-item:hover {
+                    transform: scale(1.05) rotate(1deg);
+                    box-shadow: 0 8px 24px rgba(0, 196, 180, 0.3);
+                }
+        
+                .hover-item:hover img {
+                    transform: scale(1.1);
+                    filter: brightness(1.1);
+                }
+        
+                .hover-item:hover .hover-overlay {
+                    background: linear-gradient(to bottom, rgba(0, 196, 180, 0.4), rgba(0, 0, 0, 0.7));
+                    opacity: 0.9;
+                }
+        
+                .hover-item:hover .overlay-content {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+        
+                .hover-item:hover .overlay-content a {
+                    color: #FFFFFF;
+                    text-shadow: 0 0 10px rgba(0, 196, 180, 0.8);
+                }
+        
+                .hover-item:hover .overlay-content a span {
+                    transform: translateX(5px) rotate(45deg);
+                    animation: bounce 0.5s ease-in-out;
+                }
+        
+                /* Swiper Pagination */
+                .swiper-pagination {
+                    position: absolute;
+                    bottom: 1rem;
+                    text-align: center;
+                }
+        
+                .swiper-pagination-bullet {
+                    background: #80DEEA;
+                    opacity: 0.7;
+                    transition: all 0.3s ease;
+                }
+        
+                .swiper-pagination-bullet-active {
+                    background: #00C4B4;
+                    opacity: 1;
+                    transform: scale(1.2);
+                }
+        
+                /* Responsive Padding */
+                @media (min-width: 768px) { #projects { padding: 4rem 3rem; } }
+                @media (min-width: 1024px) { #projects { padding: 4rem 6rem; } }
+                @media (min-width: 1280px) { #projects { padding: 4rem 9rem; } }
+        
+                /* Swiper Navigation Buttons */
+                .swiper-button-next,
+                .swiper-button-prev {
+                    color: #00C4B4;
+                    background-color: rgba(255, 255, 255, 0.8);
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s ease;
+                }
+        
+                .swiper-button-next::after,
+                .swiper-button-prev::after {
+                    font-family: 'FontAwesome';
+                    font-size: 1.5rem;
+                }
+        
+                .swiper-button-next::after { content: '\f054'; }
+                .swiper-button-prev::after { content: '\f053'; }
+        
+                .swiper-button-next:hover,
+                .swiper-button-prev:hover {
+                    transform: scale(1.1);
+                    color: #FFFFFF;
+                    background-color: #00C4B4;
+                    box-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+                }
+        
+                /* Bounce Animation */
+                @keyframes bounce {
+                    0%, 100% { transform: translateX(0); }
+                    50% { transform: translateX(10px); }
+                }
+        
+                .swiper-button-next:hover::after,
+                .swiper-button-prev:hover::after {
+                    animation: bounce 0.5s ease-in-out;
+                }
+        
+                /* Modal Styles */
+                .modal {
+                    position: fixed;
+                    inset: 0;
+                    z-index: 50;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(0, 0, 0, 0.7);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+                }
+        
+                .modal.active {
+                    opacity: 1;
+                    visibility: visible;
+                    transition: opacity 0.3s ease;
+                }
+        
+                .modal-container {
+                    position: relative;
+                    background: #1F2A44;
+                    padding: 2rem;
+                    max-width: 64rem;
+                    width: 90%;
+                    border-radius: 0.75rem;
+                    box-shadow: 0 8px 32px rgba(0, 196, 180, 0.2);
+                    color: #FFFFFF;
+                    transform: scale(0.8);
+                    opacity: 0;
+                    animation: modalPop 0.5s ease-out forwards;
+                }
+        
+                .closeModal {
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    color: #80DEEA;
+                    font-size: 1.5rem;
+                    transition: all 0.3s ease;
+                }
+        
+                .closeModal:hover {
+                    color: #00C4B4;
+                    transform: scale(1.2) rotate(90deg);
+                    text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+                }
+        
+                .modal-content {
+                    display: grid;
+                    gap: 1.5rem;
+                }
+        
+                @media (min-width: 768px) {
+                    .modal-content { grid-template-columns: 1fr 1fr; }
+                }
+        
+                .modal-content img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 0.5rem;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                    transition: transform 0.4s ease;
+                }
+        
+                .modal-content img:hover {
+                    transform: scale(1.03);
+                }
+        
+                .modal-content h2 {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #00C4B4;
+                    text-shadow: 0 0 5px rgba(0, 196, 180, 0.5);
+                }
+        
+                .modal-content p {
+                    color: #B2EBF2;
+                    margin-top: 0.5rem;
+                }
+        
+                .modal-details {
+                    margin-top: 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+        
+                .modal-details p { color: #FFFFFF; }
+                .modal-details span.font-semibold { color: #00C4B4; }
+        
+                /* Modal Animation */
+                @keyframes modalPop {
+                    0% { opacity: 0; transform: scale(0.8) rotateX(20deg); }
+                    60% { transform: scale(1.05) rotateX(-5deg); }
+                    100% { opacity: 1; transform: scale(1) rotateX(0); }
+                }
+            </style>
+            <!-- Projects Section -->
+            <section id="projects" class="text-white">
+                <h1 class="text-center text-2xl md:text-4xl lg:text-5xl font-bold text-[#00C4B4] drop-shadow-[0_0_10px_rgba(0,196,180,0.7)]">
+                    Projects
+                </h1>
+                <div class="swiper my-8">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/care & cure uae (1).jpg" alt="Modern Office Space">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>Care & Cure Physiotherapy and Rehabilitation Center</h2>
+                                    <a href="#" class="openModal" data-modal="modal1">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/kayi car shop uae(2).jpg" alt="Kaiyi Automobile">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>Kaiyi Automobile - Legend Motors</h2>
+                                    <a href="#" class="openModal" data-modal="modal2">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/blue mart uae (1).jpg" alt="Blue Mart Supermarket">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>Blue Mart Supermarket</h2>
+                                    <a href="#" class="openModal" data-modal="modal3">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/bright appolo -uae-dubai.jpg" alt="Bright Apollo">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>Bright Apollo</h2>
+                                    <a href="#" class="openModal" data-modal="modal4">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/villa-1.jpg" alt="Private Villa">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>Private Villa</h2>
+                                    <a href="#" class="openModal" data-modal="modal5">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 6 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/car wash centure ksa (2).jpg" alt="Al Hussan Car Wash">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>Al Hussan Premium Car Wash</h2>
+                                    <a href="#" class="openModal" data-modal="modal6">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 7 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/the noodle house (3).jpg" alt="The Noodle House">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>The Noodle House Restaurant</h2>
+                                    <a href="#" class="openModal" data-modal="modal7">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 8 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/sangeetha dubai (2).jpg" alt="Sangeetha Restaurant Dubai">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>Interior Design for Sangeetha Restaurant</h2>
+                                    <a href="#" class="openModal" data-modal="modal8">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 9 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/sangeetha restaurant abudhabijpg (3).jpg" alt="Sangeetha Restaurant Abu Dhabi">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>Interior Design for Sangeetha Restaurant</h2>
+                                    <a href="#" class="openModal" data-modal="modal9">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 10 -->
+                        <div class="swiper-slide">
+                            <div class="relative hover-item">
+                                <img src="./images/office-uae  (5).jpg" alt="ZOHA & ALI Corporate">
+                                <div class="hover-overlay"></div>
+                                <div class="overlay-content">
+                                    <h2>ZOHA & ALI Corporate</h2>
+                                    <a href="#" class="openModal" data-modal="modal10">See project <span>→</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Project Modals -->
+            <!-- Modal 1 -->
+            <section id="modal1" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/care & cure uae (1).jpg" alt="Care & Cure Center">
+                        <div>
+                            <h2>Care & Cure Physiotherapy and Rehabilitation Center</h2>
+                            <p>Location: Business Bay, United Arab Emirates (UAE)</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Project Overview:</span> Care & Cure Physiotherapy and Rehabilitation Center is a state-of-the-art facility located in the heart of Business Bay, UAE.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Modal 2 -->
+            <section id="modal2" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/kayi car shop uae(1).jpg" alt="Kaiyi Automobile">
+                        <div>
+                            <h2>Kaiyi Automobile - Legend Motors</h2>
+                            <p>Interior Design and Development for Kaiyi Automobile - Legend Motors, Deira, Dubai</p>
+                            <p>Location: 99 Al Maktoum Road, Port Saeed, Dubai</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Project Description:</span> The design focuses on clean lines, high-end materials, and a sophisticated color palette, featuring glass, steel, and polished concrete. Spacious, well-lit display areas highlight Kaiyi vehicles with strategic lighting.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Modal 3 -->
+            <section id="modal3" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/blue mart uae (3).jpg" alt="Blue Mart Supermarket">
+                        <div>
+                            <h2>Blue Mart Supermarket</h2>
+                            <p>Location: [Insert location]</p>
+                            <p>Project Type: Retail Interior Design</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Description:</span> A modern and functional supermarket interior designed for Blue Mart, providing an efficient and visually appealing shopping experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Modal 4 -->
+            <section id="modal4" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/bright appolo -uae-dubai.jpg" alt="Bright Apollo">
+                        <div>
+                            <h2>Bright Apollo</h2>
+                            <p>Location: Al Ain Mall, Bur Dubai, UAE</p>
+                            <p>Project Type: Commercial Interior Design</p>
+                            <p>Client: Bright Apollo Computer Equipment Trade</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Project Description:</span> A cutting-edge showroom in Al Ain Mall designed to showcase gaming PCs and equipment, offering an immersive brand experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Modal 5 -->
+            <section id="modal5" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/villa-02.jpg" alt="Private Villa">
+                        <div>
+                            <h2>Private Villa</h2>
+                            <p>Location: Dubai, UAE</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Project Description:</span> A luxurious and sophisticated villa interior in Dubai, blending modern elegance with timeless elements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Modal 6 -->
+            <section id="modal6" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/car wash centure ksa (1).jpg" alt="Al Hussan Car Wash">
+                        <div>
+                            <h2>Al Hussan Premium Car Wash</h2>
+                            <p>Location: Kingdom of Saudi Arabia</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Project Description:</span> An innovative car wash facility designed for efficiency and aesthetics, accommodating up to 180 cars with a vibrant VIBGYOR color scheme.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Modal 7 -->
+            <section id="modal7" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/the noodle house (5).jpg" alt="The Noodle House">
+                        <div>
+                            <h2>The Noodle House Restaurant</h2>
+                            <p>Location: Yas Mall, Abu Dhabi, UAE</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Project Description:</span> A contemporary restaurant design in Yas Mall, blending Asian street food culture with modern minimalism and natural materials.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Modal 8 -->
+            <section id="modal8" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/sangeetha dubai (6).jpg" alt="Sangeetha Restaurant Dubai">
+                        <div>
+                            <h2>Interior Design for Sangeetha Restaurant</h2>
+                            <p>Location: Dubai, UAE</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Project Description:</span> A blend of contemporary style and traditional Indian aesthetics, creating a vibrant and inviting atmosphere for Sangeetha Vegetarian Restaurant.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Modal 9 -->
+            <section id="modal9" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/sangeetha restaurant abudhabijpg (2).jpg" alt="Sangeetha Restaurant Abu Dhabi">
+                        <div>
+                            <h2>Interior Design for Sangeetha Restaurant</h2>
+                            <p>Location: Abu Dhabi, UAE</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Project Description:</span> An open-layout restaurant design combining traditional Indian motifs with modern elements for a unique dining experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Modal 10 -->
+            <section id="modal10" class="modal">
+                <div class="modal-container">
+                    <button class="closeModal">×</button>
+                    <div class="modal-content">
+                        <img src="./images/office-uae  (2).jpg" alt="ZOHA & ALI Corporate">
+                        <div>
+                            <h2>ZOHA & ALI Corporate</h2>
+                            <p>Location: UAE</p>
+                            <div class="modal-details">
+                                <p><span class="font-semibold">Project Description:</span> A modern corporate office blending aesthetics and functionality with open-plan workstations, natural light, and cultural influences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const openModalButtons = document.querySelectorAll('.openModal');
+                    const closeModalButtons = document.querySelectorAll('.closeModal');
+                    const modals = document.querySelectorAll('.modal');
+        
+                    // Open modal
+                    openModalButtons.forEach(button => {
+                        button.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            const modalId = this.getAttribute('data-modal');
+                            const modal = document.getElementById(modalId);
+                            if (modal) {
+                                modal.classList.add('active');
+                                document.body.style.overflow = 'hidden';
+                            }
+                        });
+                    });
+        
+                    // Close modal
+                    closeModalButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            const modal = this.closest('.modal');
+                            if (modal) {
+                                modal.classList.remove('active');
+                                document.body.style.overflow = '';
+                            }
+                        });
+                    });
+        
+                    // Close modal when clicking outside
+                    modals.forEach(modal => {
+                        modal.addEventListener('click', function (e) {
+                            if (e.target === modal) {
+                                modal.classList.remove('active');
+                                document.body.style.overflow = '';
+                            }
+                        });
+                    });
                 });
-            });
-        });
-        </script>
+            </script>
 
     
         <style>
@@ -2080,9 +1882,9 @@
                     <!-- Social Links -->
                     <div class="social-links">
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/share/1ENJzYUBdv/?mibextid=wwXIfr" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/retro.fit_studio?igsh=c25yc2V0Y2FmaXVy&utm_source=ig_contact_invite " class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="http://www.linkedin.com/in/retroifit-studio-875bb5355" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </section>
@@ -2109,7 +1911,7 @@
                 <h2>Featured Projects</h2>
                 <div class="projects-grid">
                     <div class="project-card animate-on-scroll">
-                        <img src="./images/blue mart uae (2).jpg" alt="Project 1">
+                        <img src="./images/office-uae  (1).jpg" alt="Project 1">
                         <div class="project-info">
                             <h3>Blue Mart UAE</h3>
                             <p>Modern commercial space</p>
@@ -2290,9 +2092,9 @@
     <!-- Social Links -->
     <div class="flex justify-center space-x-6 mt-4">
         <a href="#" class="text-xl hover:text-cyan-400"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-xl hover:text-cyan-400"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="text-xl hover:text-cyan-400"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="text-xl hover:text-cyan-400"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/share/1ENJzYUBdv/?mibextid=wwXIfr" class="text-xl hover:text-cyan-400"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/retro.fit_studio?igsh=c25yc2V0Y2FmaXVy&utm_source=ig_contact_invite " class="text-xl hover:text-cyan-400"><i class="fab fa-instagram"></i></a>
+        <a href="http://www.linkedin.com/in/retroifit-studio-875bb5355" class="text-xl hover:text-cyan-400"><i class="fab fa-linkedin-in"></i></a>
     </div>
 </footer>
 
