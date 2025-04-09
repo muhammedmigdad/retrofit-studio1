@@ -1575,7 +1575,6 @@
                 document.addEventListener('DOMContentLoaded', function () {
                     const openModalButtons = document.querySelectorAll('.openModal');
                     const closeModalButtons = document.querySelectorAll('.closeModal');
-                    const modals = document.querySelectorAll('.modal');
         
                     // Open modal
                     openModalButtons.forEach(button => {
@@ -1585,28 +1584,18 @@
                             const modal = document.getElementById(modalId);
                             if (modal) {
                                 modal.classList.add('active');
-                                document.body.style.overflow = 'hidden';
+                                document.body.style.overflow = 'hidden'; // Prevent background scroll
                             }
                         });
                     });
         
-                    // Close modal
+                    // Close modal (only via close button)
                     closeModalButtons.forEach(button => {
                         button.addEventListener('click', function () {
                             const modal = this.closest('.modal');
                             if (modal) {
                                 modal.classList.remove('active');
-                                document.body.style.overflow = '';
-                            }
-                        });
-                    });
-        
-                    // Close modal when clicking outside
-                    modals.forEach(modal => {
-                        modal.addEventListener('click', function (e) {
-                            if (e.target === modal) {
-                                modal.classList.remove('active');
-                                document.body.style.overflow = '';
+                                document.body.style.overflow = ''; // Restore scroll
                             }
                         });
                     });
@@ -1867,7 +1856,6 @@
                     <div class="text-center">
                       <button type="submit" class="contact-button" id="submitBtn">
                         <span id="buttonText">SEND MESSAGE</span>
-                        <div id="spinner" class="spinner hidden"></div>
                       </button>
                     </div>
                     <div id="formMessage" class="form-message hidden"></div>
@@ -1878,7 +1866,7 @@
                     <p>📍 <a href="https://www.google.com/maps/search/305-0+HOR+AL+ANZ-+BUILDING.,Dubai,UAE/@25.2447311,55.2704401,12603m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI1MDMxOS4yIKXMDSoASAFQAw%3D%3D" target="_blank" class="hover:underline">
                       305-0 HOR AL ANZ- BUILDING.Dubai,UAE
                     </a></p>
-                    <p class="mt-2">📧 <a href="mailto:muhammedmigdad18@gmail.com" class="hover:underline">muhammedmigdad18@gmail.com</a></p>
+                    <p class="mt-2">📧 <a href="mailto:projects@rfstustudio.ae" class="hover:underline">projects@rfstustudio.ae</a></p>
                     <p class="mt-2">📞 <a href="tel:+993449564050" class="hover:underline">+971 507704068</a></p>
                   </div>
               
@@ -1989,7 +1977,7 @@
               
                   try {
                     // Using FormSubmit.co as a simple backend solution
-                    const response = await fetch('https://formsubmit.co/ajax/muhammedmigdad18@gmail.com', {
+                    const response = await fetch('https://formsubmit.co/ajax/projects@rfstustudio.ae', {
                       method: 'POST',
                       headers: { 
                         'Content-Type': 'application/json',
