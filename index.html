@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
     <style>
         html {
             scroll-behavior: smooth;
@@ -24,22 +26,7 @@
             animation: fadeIn 1.5s ease-in-out;
         }
         
-        .hover-overlay {
-            transition: all 0.3s ease-in-out;
-            opacity: 0;
-        }
-        
-        .hover-item:hover .hover-overlay {
-            opacity: 1;
-            background: rgba(255, 215, 0, 0.4); /* Gold overlay color */
-        }
-        
-        .hover-item:hover .text-content {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        /* Base Styles for Navigation */
+        /* Navigation Styles */
         nav {
             position: fixed;
             top: 0;
@@ -63,23 +50,24 @@
         }
         
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ffffff;
             display: flex;
             align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo img {
+            height: 40px;
+            transition: transform 0.3s ease;
         }
         
         .logo h1 {
-            font-family: 'Courier New', monospace;
-            font-size: 24px;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.5rem;
             color: #888888;
-            padding: 10px;
-            display: inline-block;
-            margin-left: 0.5rem; /* Added spacing between image and text */
+            margin: 0;
         }
         
-        /* Desktop Menu with Social Icons */
+        /* Desktop Menu */
         .desktop-menu-wrapper {
             display: none;
             align-items: center;
@@ -89,242 +77,127 @@
         .desktop-menu {
             display: flex;
             gap: 1.5rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            opacity: 0;
-            animation: desktopMenuSlideIn 1s ease-out 0.6s forwards;
         }
         
         .desktop-menu a {
             position: relative;
             color: #ffc107;
             text-decoration: none;
-            transition: color 0.4s ease, transform 0.4s ease;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
         }
         
-        .desktop-menu a.active {
-            color: #ffc107;
-            text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+        .desktop-menu a:hover {
+            color: #ffffff;
         }
         
         .desktop-menu a::after {
             content: '';
             position: absolute;
-            bottom: -6px;
+            bottom: -4px;
             left: 0;
             width: 0;
             height: 2px;
             background: #ffc107;
-            transition: width 0.4s ease-in-out;
+            transition: width 0.3s ease;
         }
         
         .desktop-menu a:hover::after {
             width: 100%;
         }
         
-        .desktop-menu a:hover {
-            color: #ffffff;
-            transform: translateY(-3px) rotate(2deg);
-        }
-        
-        .social-icons.desktop {
+        .social-icons {
             display: flex;
             gap: 1rem;
-            opacity: 0;
-            animation: socialIconPop 0.7s ease-out 0.8s forwards;
         }
         
         .social-icon {
             color: rgba(43, 184, 197, 0.7);
-            font-size: 1.3rem;
-            transition: all 0.4s ease;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
         
         .social-icon:hover {
             color: #ffc107;
-            transform: scale(1.3) rotate(15deg);
-            text-shadow: 0 0 10px rgba(158, 19, 19, 0.8);
-            animation: socialPulse 1.5s infinite ease-in-out;
+            transform: scale(1.2);
         }
         
         /* Mobile Menu Button */
         .mobile-btn {
-            font-size: 1.5rem;
-            color: #ffffff;
+            display: block;
             background: none;
             border: none;
+            color: white;
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: transform 0.3s ease, color 0.3s ease;
         }
         
-        .mobile-btn:hover {
-            transform: scale(1.2) rotate(10deg);
-            color: #ffc107;
-        }
-        
-        /* Mobile Menu with Social Icons */
+        /* Mobile Menu */
         .mobile-menu {
             position: absolute;
             top: 100%;
             left: 0;
             width: 100%;
             background: rgba(18, 18, 18, 0.95);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-            transform-origin: top;
-            transition: max-height 0.5s ease-out, opacity 0.3s ease-out;
-            max-height: 0;
-            opacity: 0;
             overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-out;
         }
         
         .mobile-menu[x-show="open"] {
             max-height: 500px;
-            opacity: 1;
-            animation: mobileMenuExpand 0.6s ease-out forwards;
-        }
-        
-        .mobile-menu .menu-content {
-            padding: 1.5rem 0;
-            text-align: center;
         }
         
         .mobile-menu ul {
-            margin-bottom: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
         .mobile-menu li {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: menuItemReveal 0.5s ease-out forwards;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .mobile-menu[x-show="open"] li {
-            animation: menuItemReveal 0.5s ease-out forwards;
-        }
-        
-        .mobile-menu li:nth-child(1) { animation-delay: 0.2s; }
-        .mobile-menu li:nth-child(2) { animation-delay: 0.3s; }
-        .mobile-menu li:nth-child(3) { animation-delay: 0.4s; }
-        .mobile-menu li:nth-child(4) { animation-delay: 0.5s; }
         
         .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
             display: block;
-            color: #ffffff;
-            font-size: 1.125rem;
-            padding: 1rem;
-            transition: all 0.4s ease;
-        }
-        
-        .mobile-menu a:hover {
-            color: #ffc107;
-            transform: translateX(15px) scale(1.1);
-            text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
         }
         
         .mobile-menu .social-icons {
-            display: flex;
             justify-content: center;
-            gap: 1rem;
-            padding: 1rem 0;
-            opacity: 0;
-            transform: scale(0.8);
-            animation: socialIconPopMobile 0.6s ease-out 0.6s forwards;
+            padding: 1rem;
         }
         
-        /* Animation Keyframes */
+        /* Animations */
         @keyframes navSlideIn {
-            0% { opacity: 0; transform: translateY(-100%); }
-            100% { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(-100%); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        @keyframes desktopMenuSlideIn {
-            0% { opacity: 0; transform: translateX(-20px); }
-            100% { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes socialIconPop {
-            0% { opacity: 0; transform: scale(0.8); }
-            60% { transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        
-        @keyframes menuItemReveal {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes socialPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-        
-        @keyframes mobileMenuExpand {
-            0% { opacity: 0; transform: scaleY(0); }
-            100% { opacity: 1; transform: scaleY(1); }
-        }
-        
-        @keyframes socialIconPopMobile {
-            0% { opacity: 0; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        
-        /* Responsive Design */
+        /* Responsive Breakpoints */
         @media (min-width: 768px) {
-            .desktop-menu-wrapper { display: flex; }
-            .mobile-btn { display: none; }
-            .mobile-menu { display: none; }
+            .desktop-menu-wrapper {
+                display: flex;
+            }
+            
+            .mobile-btn {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none;
+            }
         }
         
         @media (max-width: 767px) {
-            .nav-container { padding: 1rem; }
-            .desktop-menu-wrapper { display: none; }
-            .social-icons.desktop { display: none; }
-        }
-        
-        @font-face {
-            font-family: 'YourCustomFont';
-            src: url('path-to-your-font.woff2') format('woff2'),
-                 url('path-to-your-font.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        
-        /* Flex utility for logo alignment */
-        .flex {
-            display: flex;
-            align-items: center;
-        }
-        
-        /* Ensure x-cloak hides elements before Alpine.js loads */
-        [x-cloak] {
-            display: none !important;
-        }
-        
-        /* Additional Fixes and Enhancements */
-        /* Ensure logo image has proper sizing and spacing */
-        .logo img {
-            max-height: 80px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Improve mobile menu readability */
-        .mobile-menu a {
-            line-height: 1.5;
-        }
-        
-        /* Fix potential overflow issues */
-        .nav-container {
-            overflow-x: hidden;
-        }
-        
-        /* Add smooth transition for mobile menu height */
-        .mobile-menu {
-            transition: max-height 0.5s ease-out, opacity 0.3s ease-out, transform 0.5s ease-out;
+            .nav-container {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -594,7 +467,7 @@
         }
 
         .project-link a {
-            color: #FFC107; /* Slightly lighter teal for better contrast */
+            color: #e0ab0d; /* Slightly lighter teal for better contrast */
             font-family: 'Roboto', sans-serif; /* Modern, clean font */
             font-weight: 700; /* Bolder for emphasis */
             font-size: 1.25rem; /* Slightly larger for visibility */
@@ -608,7 +481,7 @@
         .project-link a:hover {
             color: #E0F7FA; /* Light cyan on hover for a subtle glow */
             transform: translateX(0.75rem) rotate(3deg);
-            text-shadow: 0 0 10px rgba(0, 196, 180, 0.7); /* Glow effect on hover */
+            text-shadow: 0 0 10px rgba(241, 229, 3, 0.7); /* Glow effect on hover */
         }
     
         .project-link a span:first-child {
@@ -691,7 +564,7 @@
     
         @keyframes borderGlow {
             0%, 100% { border-color: #FFC107; }
-            50% { border-color: #FFC107; box-shadow: 0 0 12px rgba(0, 196, 180, 0.7); }
+            50% { border-color: #FFC107; box-shadow: 0 0 12px rgba(241, 229, 3, 0.7); }
         }
     
         /* Animation Classes */
@@ -785,7 +658,7 @@
         }
     
         .text-content h3 {
-            color: #888888; /* Gray */
+            color: #ffc107; /* Gray */
             text-transform: uppercase;
             font-weight: bold;
             letter-spacing: 0.3rem;
@@ -820,7 +693,7 @@
         }
     
         .experience-box .border-box {
-            border: 4px solid #888888;
+            border: 4px solid #ffc107;
             padding: 1rem 1.5rem;
             border-radius: 0.5rem;
             position: relative;
@@ -852,7 +725,7 @@
         }
     
         .experience-box .text span:last-child {
-            color: #888888; /* Gray */
+            color: #ffc107; /* Gray */
             font-size: 0.875rem;
         }
     
@@ -883,8 +756,8 @@
         }
     
         @keyframes glowPulse {
-            0%, 100% { text-shadow: 0 0 5px rgba(0, 196, 180, 0.5); }
-            50% { text-shadow: 0 0 20px rgba(0, 196, 180, 0.9), 0 0 30px rgba(0, 196, 180, 0.5); }
+            0%, 100% { text-shadow: 0 0 5px rgba(180, 196, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(193, 196, 0, 0.9), 0 0 30px rgba(193, 196, 0, 0.5); }
         }
     
         @keyframes imageFloat {
@@ -894,7 +767,7 @@
     
         @keyframes borderGlow {
             0%, 100% { box-shadow: 0 0 0 rgba(0, 196, 180, 0); }
-            50% { box-shadow: 0 0 15px rgba(0, 196, 180, 0.7); }
+            50% { box-shadow: 0 0 15px rgba(241, 229, 3, 0.7); }
         }
     
         @keyframes shineSweep {
@@ -1099,13 +972,13 @@
                 .overlay-content p {
                     font-size: 0.875rem;
                     font-weight: 500;
-                    color: #888888;
+                    color: #ffc107;
                 }
         
                 .overlay-content a {
                     font-size: 1.25rem;
                     font-weight: 600;
-                    color: #888888;
+                    color: #ffc107;
                     display: flex;
                     align-items: center;
                     text-decoration: none;
@@ -1156,13 +1029,13 @@
                 }
         
                 .swiper-pagination-bullet {
-                    background: #888888;
+                    background: #ffc107;
                     opacity: 0.7;
                     transition: all 0.3s ease;
                 }
         
                 .swiper-pagination-bullet-active {
-                    background: #888888;
+                    background: #ffc107;
                     opacity: 1;
                     transform: scale(1.2);
                 }
@@ -1175,7 +1048,7 @@
                 /* Swiper Navigation Buttons */
                 .swiper-button-next,
                 .swiper-button-prev {
-                    color: #888888;
+                    color: #ffc107;
                     background-color: rgba(255, 255, 255, 0.8);
                     border-radius: 50%;
                     width: 40px;
@@ -1199,8 +1072,8 @@
                 .swiper-button-prev:hover {
                     transform: scale(1.1);
                     color: #FFFFFF;
-                    background-color: #888888;
-                    box-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+                    background-color: #ffc107;
+                    box-shadow: 0 0 10px rgba(241, 229, 3, 0.7);
                 }
         
                 /* Bounce Animation */
@@ -1252,15 +1125,15 @@
                     position: absolute;
                     top: 1rem;
                     right: 1rem;
-                    color: #888888;
+                    color: #ffc107;
                     font-size: 1.5rem;
                     transition: all 0.3s ease;
                 }
         
                 .closeModal:hover {
-                    color: #888888;
+                    color: #ffc107;
                     transform: scale(1.2) rotate(90deg);
-                    text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+                    text-shadow: 0 0 10px rgba(241, 229, 3, 0.7);
                 }
         
                 .modal-content {
@@ -1287,12 +1160,12 @@
                 .modal-content h2 {
                     font-size: 1.5rem;
                     font-weight: bold;
-                    color: #888888;
-                    text-shadow: 0 0 5px rgba(0, 196, 180, 0.5);
+                    color: #ffc107;
+                    text-shadow: 0 0 5px rgba(213, 220, 10, 0.5);
                 }
         
                 .modal-content p {
-                    color: #888888;
+                    color: #FFFFFF;
                     margin-top: 0.5rem;
                 }
         
@@ -1304,7 +1177,7 @@
                 }
         
                 .modal-details p { color: #FFFFFF; }
-                .modal-details span.font-semibold { color: #888888; }
+                .modal-details span.font-semibold { color: #FFFFFF; }
         
                 /* Modal Animation */
                 @keyframes modalPop {
@@ -1315,7 +1188,7 @@
             </style>
             <!-- Projects Section -->
             <section id="projects" class="text-white">
-                <h1 class="text-center text-2xl md:text-4xl lg:text-5xl font-bold text-[#888888] drop-shadow-[0_0_10px_rgba(0,196,180,0.7)]">
+                <h1 class="text-center text-2xl md:text-4xl lg:text-5xl font-bold text-[#ffc107] drop-shadow-[0_0_10px_rgba(0,196,180,0.7)]">
                     Projects
                 </h1>
                 <div class="swiper my-8">
@@ -1689,7 +1562,7 @@
                 background: rgba(31, 41, 55, 0.6); /* Dark teal-gray with opacity */
                 border-radius: 1rem;
                 box-shadow: 0 8px 32px rgba(0, 196, 180, 0.2);
-                border: 1px solid #888888; /* Teal border */
+                border: 1px solid #ffc107; /* Teal border */
                 backdrop-filter: blur(10px);
                 position: relative;
                 z-index: 10;
@@ -1709,8 +1582,8 @@
             }
             
             .header h1 span {
-                color: #00C4B4; /* Teal */
-                text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+                color: #ffc107; /* Teal */
+                text-shadow: 0 0 10px rgba(241, 229, 3, 0.7);
             }
             
             .header p {
@@ -1752,7 +1625,7 @@
             
             /* Submit Button */
             .contact-button {
-                background: linear-gradient(90deg, #888888, #888888); /* Teal gradient */
+                background: linear-gradient(90deg, #ffc107, #ffc107); /* Teal gradient */
                 color: #FFFFFF;
                 font-weight: bold;
                 padding: 0.875rem 1.75rem;
@@ -1766,8 +1639,8 @@
             
             .contact-button:hover {
                 transform: translateY(-5px) scale(1.1);
-                box-shadow: 0 10px 30px rgba(0, 196, 180, 0.7);
-                background: linear-gradient(90deg, #888888, #888888);
+                box-shadow: 0 10px 30px rgba(241, 229, 3, 0.7);
+                background: linear-gradient(90deg, #ffc107, #ffc107);
             }
             
             /* Contact Details */
@@ -1778,19 +1651,19 @@
             }
             
             .details p {
-                color: #B2EBF2; /* Light cyan */
+                color: #ffc107; /* Light cyan */
                 margin-top: 0.5rem;
             }
             
             .details a, .details span {
-                color: #00C4B4; /* Teal */
+                color: #ffc107; /* Teal */
                 text-decoration: none;
                 transition: all 0.3s ease;
             }
             
             .details a:hover {
                 text-decoration: underline;
-                text-shadow: 0 0 10px rgba(0, 196, 180, 0.7);
+                text-shadow: 0 0 10px rgba(241, 229, 3, 0.7);
             }
             
             /* Social Links */
@@ -1809,7 +1682,7 @@
             }
             
             .social-icon:hover {
-                color: #00C4B4;
+                color: #ffc107;
                 transform: scale(1.3) rotate(20deg);
                 text-shadow: 0 0 10px rgba(0, 196, 180, 0.8);
             }
@@ -2162,7 +2035,7 @@
                 #featured-projects h2 {
                     font-size: 2.5rem;
                     font-weight: bold;
-                    color: #888888;
+                    color: #ffc107;
                     margin-bottom: 2rem;
                     text-shadow: 0 0 10px rgba(0, 196, 180, 0.5);
                 }
@@ -2221,13 +2094,13 @@
                 .project-info h6 {
                     font-size: 1.00rem;
                     font-weight: bold;
-                    color: #888888;
+                    color: #ffc107;
 
                 }
             
                 .project-info p {
                     font-size: 0.875rem;
-                    color: #888888;
+                    color: #ffc107;
                 }
             
                 @keyframes projectPop {
@@ -2272,13 +2145,13 @@
 
 <!-- Footer -->
 <footer class="bg-gray-900 text-white text-center py-6">
-    <p class="text-[#00C4B4]">&copy; 2025 Retrofit Studio. All rights reserved.</p>
+    <p class="text-[#ffc107]">&copy; 2025 Retrofit Studio. All rights reserved.</p>
     
     <!-- Social Links -->
     <div class="flex justify-center space-x-6 mt-4">
-        <a href="https://www.facebook.com/share/1ENJzYUBdv/?mibextid=wwXIfr" class="text-xl hover:text-cyan-400"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/retro.fit_studio?igsh=c25yc2V0Y2FmaXVy&utm_source=ig_contact_invite " class="text-xl hover:text-cyan-400"><i class="fab fa-instagram"></i></a>
-        <a href="http://www.linkedin.com/in/retroifit-studio-875bb5355" class="text-xl hover:text-cyan-400"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/share/1ENJzYUBdv/?mibextid=wwXIfr" class="text-xl hover:text-[#ffc107]"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/retro.fit_studio?igsh=c25yc2V0Y2FmaXVy&utm_source=ig_contact_invite " class="text-xl hover:text-[#ffc107]"><i class="fab fa-instagram"></i></a>
+        <a href="http://www.linkedin.com/in/retroifit-studio-875bb5355" class="text-xl hover:text-[#ffc107]"><i class="fab fa-linkedin-in"></i></a>
     </div>
 </footer>
 
